@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="model" default="$(find surveillance_robot2)/urdf/robot_alpha.xacro" />
+
+  <!-- We resume the logic in empty_world.launch -->
+   <include file="$(find gazebo_ros)/launch/empty_world.launch"> 
+    <arg name="paused" value="true"/>
+  </include>
+
+  <!-- Load the URDF into the ROS Parameter Server -->
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(arg model)" />
+	 
+  <!-- Start Rviz -->  
+  <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui" ></node>
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" /> 
+  <node name="rviz" pkg="rviz" type="rviz" required="true" args="-d $(find surveillance_robot2)/config/sim.rviz"/>
+  <!--<node name="rviz" pkg="rviz" type="rviz" args="-d $(find urdf_tutorial)/urdf.rviz" /> -->
+
+  <!-- Spawn the robot model in Gazebo -->
+   <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+	args="-urdf -model robot1 -param robot_description -z 0.05"/> <!---x -6.0 -y 11.0 -z 0.05 -->
+
+  <!-- Arm joints controller -->
+  <rosparam file="$(find surveillance_robot2)/config/motors_config.yaml" command="load" ns="/robot" />
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="--namespace=/robot
+       joint_state_controller
+       joint1_position_controller
+       joint2_position_controller
+       joint3_position_controller
+       --shutdown-timeout 3">
+  </node>
+
+  <node pkg = "surveillance_robot2"  
+    type = "arm_controller.py"
+    name = "arm_controller"
+    output = "screen"
+  > </node>
+
+  <node name="marker_server"
+      pkg="surveillance_robot2"
+      type="marker_server" 
+  ></node>
+
+  <node name="marker_detector"
+      pkg="surveillance_robot2"
+      type="marker_detector" 
+  ></node>
+
+</launch>

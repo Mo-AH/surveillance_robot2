@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find surveillance_robot2)/launch/gazebo_rviz.launch"/>
+  <include file="$(find surveillance_robot2)/launch/gmapping_movebase.launch"/>
+
+  <!-- Arm joints controller -->
+  <rosparam file="$(find surveillance_robot2)/config/motors_config.yaml" command="load" ns="/robot" />
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" output="screen" args="--namespace=/robot
+       joint_state_controller
+       joint1_position_controller
+       joint2_position_controller
+       joint3_position_controller
+       --shutdown-timeout 3">
+  </node>
+
+  <!-- PACKAGE NODES -->
+  <rosparam param="test/random_sense/active"> True </rosparam>
+  <rosparam param="test/battery_time"> [1500.0, 2000.0]</rosparam>
+  <rosparam param="test/charging_time">10</rosparam>
+  <rosparam param="map/total_markers">7</rosparam>  
+
+  <node pkg = "surveillance_robot2"  
+          type = "robot_state.py" 
+          name = "robot_state"
+          output = "screen"
+          launch-prefix = "xterm -e"
+    > </node>
+
+  <node pkg = "surveillance_robot2"  
+        type = "smach_robot.py" 
+        name = "smach_robot"
+        output = "screen"
+        launch-prefix = "xterm -e"
+  > </node>  
+
+  <node pkg = "surveillance_robot2"  
+    type = "arm_controller.py"
+    name = "arm_controller"
+    output = "screen"
+  > </node>
+
+  <node name="marker_server"
+      pkg="surveillance_robot2"
+      type="marker_server" 
+  ></node>
+
+  <node name="marker_detector"
+      pkg="surveillance_robot2"
+      type="marker_detector"
+      output = "screen"
+      launch-prefix = "xterm -e"
+  ></node>
+
+</launch>

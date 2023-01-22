@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+      <node pkg="armor"
+            type="execute"
+            name="armor_service"
+            args="it.emarolab.armor.ARMORMainService"
+            launch-prefix = "xterm -e"
+            output = "screen"
+      > </node>
+</launch>

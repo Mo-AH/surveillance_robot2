@@ -1,0 +1,20 @@
+###### The arm motion controlling interface
+
+### Action Service Goal
+
+# The movement to perform
+int32 movement_cmd
+
+---
+
+### Action Server Result
+
+# The final pose of the arm
+float32[] final_pose
+
+---
+
+### Action Server Feedback
+
+# The current pose of the arm
+float32[] current_pose

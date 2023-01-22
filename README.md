@@ -14,8 +14,8 @@ The full documentation can be found [here](https://Mo-AH.github.io/surveillance_
 
 ## Environment ##
 
-In this assignment, we are considering an indoor environment made of 4 rooms and 3 corridors, shown in the figure.
-The robot starts in an additional room attached to the corridor `E`, where there are 7 `ArucoMarkers` embedding the map informations.
+In this assignment, we have a `world` file with an indoor environment consisting of four rooms and three corridors, as illustrated in the accompanying figure. The robot begins in an additional room connected to corridor `E`, where it finds seven `ArucoMarkers` that contain information about the map. The assignment's environment has been slightly altered, with the boxes on which the markers are located being painted white. This change was made because the marker detection was not performing well due to low contrast when the boxes were black.
+It's worth noting that the software has the ability to adapt to other environments as long as it starts from a location that contains information about the rooms coordinates/connections.
 
 ![indoor_map](https://user-images.githubusercontent.com/91679281/213928100-e7ce9ddc-b498-4271-a2cb-17d845c98af9.jpg)
 
@@ -33,7 +33,7 @@ The robot behaviour can be devided into two phases:
 
  - Phase 1:
     - The robot spawns in his starting location.
-    - The robot move the arm (that has a camera attached on the end-effector) searching for markers to retrieve the environment informations.
+    - The robot moves just the arm (that has a camera attached on the end-effector) searching for markers to retrieve the environment informations.
  
  - Phase 2:
     - The robot moves in a new location and checks it by rotating the arm before to visit another location. (This behavior is repeated in a infinite loop).
@@ -71,6 +71,14 @@ The behaviour implemented in this repository follows the policy described in thi
 Note that, while performing `[1]` , it is always aware of the battery level. Moreover, if the battery is low, the `[0]` algorithm cancels the task it was doing. 
 
 ---
+
+## Robot Model ##  
+
+![robot](https://user-images.githubusercontent.com/91679281/213946027-0c7322bd-0b66-4eb6-b8c9-a289ea58948e.png)
+
+The model used consist in a simple vehicle with a laser scan and an arm mounted on top, consisting in one rotating base plus two links connected through revolute joints. On the end-effector is mounted a camera which has the aim of detecting markers. 
+
+The arm is controlled through the `JointStateController` interface.
 
 # Software Architecture #
 
@@ -259,10 +267,6 @@ In the video, there is the demonstration of the running code. It shows the initi
 
 
 ---
-
-### Credits ###
-
-The package has been created starting from the [Surveillance Robot](https://github.com/Mo-AH/surveillance_robot) package, which in turn was derived from the [arch_skeleton](https://github.com/buoncubi/arch_skeleton) repository created by prof. Luca Buoncompagni. Specifically, the package utilizes the python modules `robot_state.py` and `action_client_helper.py`.
 
 ***Author***: Mohammad Al Horany
 

@@ -1,0 +1,384 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classaction__client__helper_1_1_action_client_helper" kind="class" language="Python" prot="public">
+    <compoundname>action_client_helper::ActionClientHelper</compoundname>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classaction__client__helper_1_1_action_client_helper_1a5f4a29e3f31ad446f1a13d906092fe54" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>action_client_helper.ActionClientHelper::_service_name</definition>
+        <argsstring></argsstring>
+        <name>_service_name</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="57" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="57" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaction__client__helper_1_1_action_client_helper_1a3c47744d499441fcb3ef92104e445946" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>action_client_helper.ActionClientHelper::_mutex</definition>
+        <argsstring></argsstring>
+        <name>_mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="61" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="61" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaction__client__helper_1_1_action_client_helper_1a618adbf9a58fda49097e9229a15847ad" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>action_client_helper.ActionClientHelper::_client</definition>
+        <argsstring></argsstring>
+        <name>_client</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="66" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="66" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaction__client__helper_1_1_action_client_helper_1a1398dd6e252659aa85b9a0c26eb117a1" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>action_client_helper.ActionClientHelper::_external_done_cb</definition>
+        <argsstring></argsstring>
+        <name>_external_done_cb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="69" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="69" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaction__client__helper_1_1_action_client_helper_1a9a20cbcb9fc1a9371b8322058503f150" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>action_client_helper.ActionClientHelper::_external_feedback_cb</definition>
+        <argsstring></argsstring>
+        <name>_external_feedback_cb</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="70" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="70" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaction__client__helper_1_1_action_client_helper_1af41ada341940aba0374dc9189834c690" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>action_client_helper.ActionClientHelper::_is_running</definition>
+        <argsstring></argsstring>
+        <name>_is_running</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="91" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaction__client__helper_1_1_action_client_helper_1a0446d75db9c3c3c4b91be492d739cfa4" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>action_client_helper.ActionClientHelper::_is_done</definition>
+        <argsstring></argsstring>
+        <name>_is_done</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="92" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classaction__client__helper_1_1_action_client_helper_1a310ed8f39be945e28d9befbdb11ffcee" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>action_client_helper.ActionClientHelper::_results</definition>
+        <argsstring></argsstring>
+        <name>_results</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="93" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classaction__client__helper_1_1_action_client_helper_1a867ebd6d55b3e6168c3bbc5d78a02532" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def action_client_helper.ActionClientHelper.__init__</definition>
+        <argsstring>(self, service_name, action_type, done_callback=None, feedback_callback=None, mutex=None)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>service_name</type>
+          <defname>service_name</defname>
+        </param>
+        <param>
+          <type>action_type</type>
+          <defname>action_type</defname>
+        </param>
+        <param>
+          <type>done_callback</type>
+          <defname>done_callback</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>feedback_callback</type>
+          <defname>feedback_callback</defname>
+          <defval>None</defval>
+        </param>
+        <param>
+          <type>mutex</type>
+          <defname>mutex</defname>
+          <defval>None</defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="51" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="51" bodyend="74"/>
+      </memberdef>
+      <memberdef kind="function" id="classaction__client__helper_1_1_action_client_helper_1ab610751037cae773ef35e6ae90bfe4fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def action_client_helper.ActionClientHelper.send_goal</definition>
+        <argsstring>(self, goal)</argsstring>
+        <name>send_goal</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>goal</type>
+          <defname>goal</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Start the action server with a new `goal`.
+    Note this call is not blocking (i.e., asynchronous performed).
+
+    Args:
+goal (ActionGoal): the goal message of the action</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="75" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="75" bodyend="97"/>
+      </memberdef>
+      <memberdef kind="function" id="classaction__client__helper_1_1_action_client_helper_1ae44c0eb0137424d806d9770de487fd31" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def action_client_helper.ActionClientHelper.cancel_goals</definition>
+        <argsstring>(self)</argsstring>
+        <name>cancel_goals</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Stop the computation of the action server.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="98" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="98" bodyend="111"/>
+      </memberdef>
+      <memberdef kind="function" id="classaction__client__helper_1_1_action_client_helper_1a4fee602be4c2d7aff2cb569f2c981789" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def action_client_helper.ActionClientHelper.reset_client_states</definition>
+        <argsstring>(self)</argsstring>
+        <name>reset_client_states</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Reset the client state variables stored in this class.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="112" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="112" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classaction__client__helper_1_1_action_client_helper_1a2c7f8aa27894c5774eefac64ba0fdafe" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def action_client_helper.ActionClientHelper.is_done</definition>
+        <argsstring>(self)</argsstring>
+        <name>is_done</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method to check if the action is done.
+
+    Returns:
+bool (Bool): `True` if the action server finished is computation, or `False` otherwise.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="166" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="166" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classaction__client__helper_1_1_action_client_helper_1a5c5b45ef646fc47baeae9461a574169c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def action_client_helper.ActionClientHelper.is_running</definition>
+        <argsstring>(self)</argsstring>
+        <name>is_running</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method to check if the action server is running.
+
+    Returns:
+bool (Bool): `True` if the action server is running, or `False` otherwise.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="176" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="176" bodyend="184"/>
+      </memberdef>
+      <memberdef kind="function" id="classaction__client__helper_1_1_action_client_helper_1a967cdd946ea952aff0a803710bdbe98b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def action_client_helper.ActionClientHelper.get_results</definition>
+        <argsstring>(self)</argsstring>
+        <name>get_results</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method to get the results of the action.
+
+    Returns:
+result (ActionResult): results of the action server, if any, or `None`.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="185" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="185" bodyend="198"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classaction__client__helper_1_1_action_client_helper_1ae25ecf8976b572b56b23d4ad1e66ad4c" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def action_client_helper.ActionClientHelper._feedback_callback</definition>
+        <argsstring>(self, feedback)</argsstring>
+        <name>_feedback_callback</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>feedback</type>
+          <defname>feedback</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>This function is called when the action server send some `feedback` back to the client.
+    
+    Args:
+feedback (ActionFeedback): the feedback of the action</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="120" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="120" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classaction__client__helper_1_1_action_client_helper_1af14c9f4480e98342f69eeb32d6a6c8d3" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def action_client_helper.ActionClientHelper._done_callback</definition>
+        <argsstring>(self, status, results)</argsstring>
+        <name>_done_callback</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>status</type>
+          <defname>status</defname>
+        </param>
+        <param>
+          <type>results</type>
+          <defname>results</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>This function is called when the action server finish its computation, i.e., it provides a `done` message.
+    
+    Args:
+status (ActionStatus): the state of the action
+results (ActionResult): the result of the action</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/action_client_helper.py" line="142" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="142" bodyend="165"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>A class to simplify the implementation of a client for ROS action servers.
+
+    Args:
+        service_name (str) : it is the name of the server that will be invoked by this client.
+        
+        action_type (msg): it is the message type that the server will exchange.
+        
+        done_callback (function) : it is the name of the function called when the action server completed its computation. If
+        this parameter is not set (i.e., set to `None`), then only the `self._done_callback` function will be
+        called when the server completes its computation.
+        
+        feedback_callback (function): it is the name of the function called when the action server sends a feedback message. If
+        this parameter is not set (i.e., set to `None`), then only the `self._feedback_callback` functions will be
+        called when the server sends a feedback message.
+        
+        mutex (Lock): it is a `Lock` object synchronised with the `done_callback` and `feedback_callback`. If it is not set
+        (i.e., set to `None`), then a new mutex instance is considered. Set this variable if you want to extends the
+        synchronization with other classes.
+</verbatim> </para>
+    </detaileddescription>
+    <location file="utilities/surveillance_robot2/action_client_helper.py" line="30" column="1" bodyfile="utilities/surveillance_robot2/action_client_helper.py" bodystart="30" bodyend="198"/>
+    <listofallmembers>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a867ebd6d55b3e6168c3bbc5d78a02532" prot="public" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>__init__</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a618adbf9a58fda49097e9229a15847ad" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_client</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1af14c9f4480e98342f69eeb32d6a6c8d3" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_done_callback</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a1398dd6e252659aa85b9a0c26eb117a1" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_external_done_cb</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a9a20cbcb9fc1a9371b8322058503f150" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_external_feedback_cb</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1ae25ecf8976b572b56b23d4ad1e66ad4c" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_feedback_callback</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a0446d75db9c3c3c4b91be492d739cfa4" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_is_done</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1af41ada341940aba0374dc9189834c690" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_is_running</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a3c47744d499441fcb3ef92104e445946" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_mutex</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a310ed8f39be945e28d9befbdb11ffcee" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_results</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a5f4a29e3f31ad446f1a13d906092fe54" prot="private" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>_service_name</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1ae44c0eb0137424d806d9770de487fd31" prot="public" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>cancel_goals</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a967cdd946ea952aff0a803710bdbe98b" prot="public" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>get_results</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a2c7f8aa27894c5774eefac64ba0fdafe" prot="public" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>is_done</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a5c5b45ef646fc47baeae9461a574169c" prot="public" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>is_running</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1a4fee602be4c2d7aff2cb569f2c981789" prot="public" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>reset_client_states</name></member>
+      <member refid="classaction__client__helper_1_1_action_client_helper_1ab610751037cae773ef35e6ae90bfe4fb" prot="public" virt="non-virtual"><scope>action_client_helper::ActionClientHelper</scope><name>send_goal</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

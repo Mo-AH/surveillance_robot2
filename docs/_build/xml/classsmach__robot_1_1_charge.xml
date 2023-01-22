@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classsmach__robot_1_1_charge" kind="class" language="Python" prot="public">
+    <compoundname>smach_robot::Charge</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">State</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classsmach__robot_1_1_charge_1afb77ed6de9dbe890aa7caf77a55b23ab" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_robot.Charge::smach_helper</definition>
+        <argsstring></argsstring>
+        <name>smach_helper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/smach_robot.py" line="157" column="1" bodyfile="scripts/smach_robot.py" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsmach__robot_1_1_charge_1a2db560aa5f1a2101bbba2ff688e91374" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_robot.Charge.__init__</definition>
+        <argsstring>(self, smach_helper)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>smach_helper</type>
+          <defname>smach_helper</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/smach_robot.py" line="155" column="1" bodyfile="scripts/smach_robot.py" bodystart="155" bodyend="158"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__robot_1_1_charge_1a95c301d28dc9bf6c7b05bb9d859989b2" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_robot.Charge.execute</definition>
+        <argsstring>(self, userdata)</argsstring>
+        <name>execute</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>userdata</type>
+          <defname>userdata</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Execute method of the state CHARGE.
+
+    Returns:
+string (str): transition to the next state.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/smach_robot.py" line="159" column="1" bodyfile="scripts/smach_robot.py" bodystart="159" bodyend="170"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>This class defines the state CHARGE of the state machine.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>State</label>
+      </node>
+      <node id="1">
+        <label>smach_robot.Charge</label>
+        <link refid="classsmach__robot_1_1_charge"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>State</label>
+      </node>
+      <node id="1">
+        <label>smach_robot.Charge</label>
+        <link refid="classsmach__robot_1_1_charge"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="scripts/smach_robot.py" line="152" column="1" bodyfile="scripts/smach_robot.py" bodystart="152" bodyend="171"/>
+    <listofallmembers>
+      <member refid="classsmach__robot_1_1_charge_1a2db560aa5f1a2101bbba2ff688e91374" prot="public" virt="non-virtual"><scope>smach_robot::Charge</scope><name>__init__</name></member>
+      <member refid="classsmach__robot_1_1_charge_1a95c301d28dc9bf6c7b05bb9d859989b2" prot="public" virt="non-virtual"><scope>smach_robot::Charge</scope><name>execute</name></member>
+      <member refid="classsmach__robot_1_1_charge_1afb77ed6de9dbe890aa7caf77a55b23ab" prot="public" virt="non-virtual"><scope>smach_robot::Charge</scope><name>smach_helper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="_r_e_a_d_m_e_8md" kind="file" language="Markdown">
+    <compoundname>README.md</compoundname>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Surveillance<sp/>Robot<sp/>2<sp/>#</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Second<sp/>Assignment<sp/>of<sp/>Experimental<sp/>Robotic<sp/>Laboratory<sp/>-<sp/>Robotics<sp/>Engineering<sp/>-<sp/>UniGE**</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>repository<sp/>contains<sp/>the<sp/>development<sp/>of<sp/>a<sp/>ROS-based<sp/>simulation<sp/>of<sp/>a<sp/>robot<sp/>model<sp/>(a<sp/>vehicle<sp/>equipped<sp/>with<sp/>a<sp/>laserscan<sp/>sensor<sp/>and<sp/>a<sp/>camera<sp/>arm<sp/>on<sp/>top),<sp/>designed<sp/>for<sp/>indoor<sp/>surveillance<sp/>operations.</highlight></codeline>
+<codeline><highlight class="normal">It<sp/>is<sp/>the<sp/>second<sp/>release<sp/>of<sp/>the<sp/>[Surveillance<sp/>Robot](https://github.com/Mo-AH/surveillance_robot)<sp/>simulation.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>full<sp/>documentation<sp/>can<sp/>be<sp/>found<sp/>[here](https://Mo-AH.github.io/surveillance_robot2/).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Scenario<sp/>#</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Environment<sp/>##</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>this<sp/>assignment,<sp/>we<sp/>are<sp/>considering<sp/>an<sp/>indoor<sp/>environment<sp/>made<sp/>of<sp/>4<sp/>rooms<sp/>and<sp/>3<sp/>corridors,<sp/>shown<sp/>in<sp/>the<sp/>figure.</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>robot<sp/>starts<sp/>in<sp/>an<sp/>additional<sp/>room<sp/>attached<sp/>to<sp/>the<sp/>corridor<sp/>`E`,<sp/>where<sp/>there<sp/>are<sp/>7<sp/>`ArucoMarkers`<sp/>embedding<sp/>the<sp/>map<sp/>informations.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">![indoor_map](########################)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>indoor<sp/>environment<sp/>is<sp/>composed<sp/>of<sp/>locations<sp/>and<sp/>doors.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>A<sp/>room<sp/>is<sp/>a<sp/>location<sp/>with<sp/>just<sp/>one<sp/>door</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>A<sp/>corridor<sp/>is<sp/>a<sp/>location<sp/>with<sp/>2<sp/>or<sp/>more<sp/>doors</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>If<sp/>two<sp/>locations<sp/>have<sp/>the<sp/>same<sp/>door,<sp/>they<sp/>are<sp/>connected<sp/>and<sp/>the<sp/>robot<sp/>can<sp/>move<sp/>from<sp/>one<sp/>to<sp/>the<sp/>other</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>If<sp/>a<sp/>room<sp/>has<sp/>not<sp/>been<sp/>visited<sp/>for<sp/>some<sp/>time<sp/>(parameter<sp/>`urgencyThreshold`),<sp/>it<sp/>becomes<sp/>urgent</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">For<sp/>the<sp/>environment<sp/>representation,<sp/>it<sp/>has<sp/>been<sp/>used<sp/>the<sp/>[topological_map](https://github.com/buoncubi/topological_map)<sp/>ontology,<sp/>which<sp/>was<sp/>previously<sp/>created<sp/>with<sp/>Protegé.<sp/>In<sp/>particular,<sp/>the<sp/>[file](https://github.com/Mo-AH/surveillance_robot2/tree/main/ontologies)<sp/>used<sp/>in<sp/>this<sp/>software<sp/>is<sp/>completely<sp/>without<sp/>the<sp/>Abox.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Assumptions<sp/>and<sp/>Behaviour<sp/>##</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>robot<sp/>behaviour<sp/>can<sp/>be<sp/>devided<sp/>into<sp/>two<sp/>phases:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Phase<sp/>1:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>The<sp/>robot<sp/>spawns<sp/>in<sp/>his<sp/>starting<sp/>location.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>The<sp/>robot<sp/>move<sp/>the<sp/>arm<sp/>(that<sp/>has<sp/>a<sp/>camera<sp/>attached<sp/>on<sp/>the<sp/>end-effector)<sp/>searching<sp/>for<sp/>markers<sp/>to<sp/>retrieve<sp/>the<sp/>environment<sp/>informations.</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Phase<sp/>2:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>The<sp/>robot<sp/>moves<sp/>in<sp/>a<sp/>new<sp/>location<sp/>and<sp/>checks<sp/>it<sp/>by<sp/>rotating<sp/>the<sp/>arm<sp/>before<sp/>to<sp/>visit<sp/>another<sp/>location.<sp/>(This<sp/>behavior<sp/>is<sp/>repeated<sp/>in<sp/>a<sp/>infinite<sp/>loop).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>If<sp/>the<sp/>battery<sp/>get<sp/>low,<sp/>it<sp/>leave<sp/>the<sp/>task<sp/>it<sp/>was<sp/>doing<sp/>to<sp/>reach<sp/>the<sp/>charging<sp/>location<sp/>and<sp/>waits<sp/>some<sp/>time<sp/>to<sp/>recharge.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Moreover,<sp/>when<sp/>robot&apos;s<sp/>battery<sp/>is<sp/>not<sp/>low,<sp/>it<sp/>should<sp/>move<sp/>among<sp/>locations<sp/>with<sp/>2<sp/>basic<sp/>rules:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>It<sp/>should<sp/>mainly<sp/>stay<sp/>on<sp/>corridors.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>If<sp/>a<sp/>reachable<sp/>room<sp/>has<sp/>not<sp/>been<sp/>visited<sp/>for<sp/>some<sp/>time,<sp/>it<sp/>becomes<sp/>`URGENT`<sp/>and<sp/>it<sp/>should<sp/>be<sp/>visited.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>a<sp/>lot<sp/>of<sp/>ways<sp/>for<sp/>achieving<sp/>a<sp/>surveillance<sp/>behaviour<sp/>and<sp/>a<sp/>set<sp/>of<sp/>assumptions<sp/>should<sp/>be<sp/>made:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>The<sp/>environment<sp/>does<sp/>not<sp/>change<sp/>in<sp/>time.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>The<sp/>robot<sp/>can<sp/>move<sp/>only<sp/>to<sp/>locations<sp/>connected<sp/>to<sp/>the<sp/>current<sp/>location.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>The<sp/>only<sp/>location<sp/>that<sp/>the<sp/>robot<sp/>can<sp/>always<sp/>reach<sp/>is<sp/>the<sp/>recharging<sp/>one.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Only<sp/>the<sp/>rooms<sp/>can<sp/>become<sp/>urgent.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>The<sp/>battery<sp/>can<sp/>become<sp/>low<sp/>at<sp/>any<sp/>time.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">After<sp/>having<sp/>retrieved<sp/>the<sp/>informations<sp/>to<sp/>build<sp/>the<sp/>map,<sp/>it<sp/>starts<sp/>in<sp/>a<sp/>loop<sp/>the<sp/>phase<sp/>2<sp/>of<sp/>the<sp/>simulation,<sp/>which<sp/>can<sp/>be<sp/>modeled<sp/>in<sp/>a<sp/>several<sp/>ways<sp/>depending<sp/>on<sp/>further<sp/>specifications<sp/>(e.g.<sp/>all<sp/>the<sp/>locations<sp/>should<sp/>be<sp/>urgent<sp/>or<sp/>maybe<sp/>even<sp/>the<sp/>charging<sp/>location<sp/>should<sp/>be<sp/>be<sp/>visited<sp/>normally).</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>behaviour<sp/>implemented<sp/>in<sp/>this<sp/>repository<sp/>follows<sp/>the<sp/>policy<sp/>described<sp/>in<sp/>this<sp/>pseudocode:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>[1]<sp/>Surveillance<sp/>policy:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>there<sp/>are<sp/>urgent<sp/>rooms<sp/>reachable:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>move<sp/>to<sp/>the<sp/>most<sp/>urgent</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>check<sp/>the<sp/>room</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>else:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>move<sp/>to<sp/>a<sp/>corridor</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>#<sp/>[0]<sp/>Battery<sp/>checking:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>if<sp/>battery<sp/>is<sp/>low:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>move<sp/>to<sp/>charging<sp/>location</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>recharge</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>start<sp/>again<sp/>from<sp/>[1]</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">Note<sp/>that,<sp/>while<sp/>performing<sp/>`[1]`<sp/>,<sp/>it<sp/>is<sp/>always<sp/>aware<sp/>of<sp/>the<sp/>battery<sp/>level.<sp/>Moreover,<sp/>if<sp/>the<sp/>battery<sp/>is<sp/>low,<sp/>the<sp/>`[0]`<sp/>algorithm<sp/>cancels<sp/>the<sp/>task<sp/>it<sp/>was<sp/>doing.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Software<sp/>Architecture<sp/>#</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Components<sp/>diagram<sp/>##</highlight></codeline>
+<codeline><highlight class="normal">The<sp/>connections<sp/>among<sp/>the<sp/>nodes<sp/>are<sp/>described<sp/>in<sp/>the<sp/>following<sp/>image.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">![component_diagram](https://user-images.githubusercontent.com/91679281/203868060-07eac4a6-41d4-48bb-b6a8-51ac289e9a0c.png)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">We<sp/>can<sp/>see<sp/>how<sp/>the<sp/>`smach_robot`,<sp/>which<sp/>implements<sp/>the<sp/>behaviour<sp/>of<sp/>the<sp/>robot<sp/>using<sp/>a<sp/>state<sp/>machine,<sp/>is<sp/>the<sp/>central<sp/>entity<sp/>of<sp/>the<sp/>entire<sp/>architecture<sp/>and<sp/>is<sp/>better<sp/>described<sp/>after,<sp/>in<sp/>the<sp/>states<sp/>diagram.</highlight></codeline>
+<codeline><highlight class="normal">Taking<sp/>apart<sp/>the<sp/>`ARMOR<sp/>Server`,<sp/>which<sp/>is<sp/>used<sp/>by<sp/>`smach_robot`<sp/>to<sp/>update<sp/>and<sp/>reason<sp/>about<sp/>the<sp/>ontology,<sp/>the<sp/>other<sp/>nodes<sp/>simulate<sp/>specific<sp/>components<sp/>of<sp/>the<sp/>robot:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`robot_state`:<sp/>node<sp/>in<sp/>charge<sp/>of<sp/>managing<sp/>the<sp/>battery<sp/>level.<sp/>It<sp/>provides<sp/>a<sp/>publisher<sp/>for<sp/>the<sp/>battery<sp/>level<sp/>(`Bool.msg`)<sp/>and<sp/>a<sp/>service<sp/>to<sp/>recharge<sp/>the<sp/>battery<sp/>(`SetBool.srv`).</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`marker_detector`:<sp/>node<sp/>in<sp/>charge<sp/>of<sp/>providing<sp/>the<sp/>room<sp/>informations<sp/>to<sp/>build<sp/>the<sp/>map.<sp/>It<sp/>subscribes<sp/>to<sp/>the<sp/>topic<sp/>`/robot/camera/image_raw`<sp/>to<sp/>get<sp/>the<sp/>camera<sp/>images,<sp/>detect<sp/>the<sp/>markers<sp/>IDs,<sp/>asks<sp/>for<sp/>the<sp/>embedded<sp/>information<sp/>to<sp/>the<sp/>`/room_info`<sp/>service<sp/>and<sp/>publishes<sp/>the<sp/>room<sp/>infos<sp/>in<sp/>the<sp/>`/map/rooms`<sp/>topic.<sp/>When<sp/>it<sp/>has<sp/>found<sp/>all<sp/>the<sp/>markers,<sp/>its<sp/>job<sp/>is<sp/>done<sp/>and<sp/>so<sp/>it<sp/>shutdown.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`marker_server`:<sp/>node<sp/>that<sp/>implements<sp/>a<sp/>service:<sp/>it<sp/>requires<sp/>the<sp/>`id`<sp/>(marker)<sp/>detected<sp/>by<sp/>the<sp/>robot<sp/>and<sp/>it<sp/>replies<sp/>with<sp/>the<sp/>information<sp/>about<sp/>the<sp/>corresponding<sp/>room<sp/>(name<sp/>of<sp/>the<sp/>room,<sp/>coordinates<sp/>of<sp/>the<sp/>center,<sp/>connections<sp/>with<sp/>other<sp/>rooms).</highlight></codeline>
+<codeline><highlight class="normal"><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`arm_controller`:<sp/>node<sp/>in<sp/>charge<sp/>of<sp/>controlling<sp/>the<sp/>robotic<sp/>arm.<sp/>Given<sp/>a<sp/>`movement_cmd`,<sp/>it<sp/>follows<sp/>the<sp/>trajectory<sp/>poses<sp/>for<sp/>that<sp/>movement.<sp/>For<sp/>doing<sp/>so,<sp/>it<sp/>implements<sp/>an<sp/>Action<sp/>Server<sp/>that<sp/>uses<sp/>the<sp/>custom<sp/>action<sp/>`ArmControl.action`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Sequence<sp/>diagram<sp/>##</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">![sequence_diagram](https://user-images.githubusercontent.com/91679281/203868067-1aaa2c30-93bb-4eab-866e-c3edf35ddefa.png)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>diagram<sp/>represents<sp/>the<sp/>sequential<sp/>flow<sp/>of<sp/>the<sp/>architecture.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>particular,<sp/>it<sp/>shows<sp/>that<sp/>the<sp/>nodes<sp/>always<sp/>active<sp/>are<sp/>`smach_robot`,<sp/>expectable<sp/>as<sp/>it<sp/>is<sp/>the<sp/>central<sp/>entity<sp/>that<sp/>calls<sp/>the<sp/>other<sp/>components,<sp/>and<sp/>the<sp/>`robot_state`,<sp/>because<sp/>it<sp/>always<sp/>keeps<sp/>track<sp/>of<sp/>the<sp/>battery<sp/>level.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Apart<sp/>from<sp/>`marker_detector`,<sp/>which<sp/>shutdown<sp/>once<sp/>finished<sp/>the<sp/>trasmission<sp/>of<sp/>rooms<sp/>informations,<sp/>the<sp/>other<sp/>nodes<sp/>are<sp/>active<sp/>only<sp/>when<sp/>the<sp/>`smach_robot`<sp/>call<sp/>them:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`marker_server`:<sp/>when<sp/>the<sp/>robot<sp/>has<sp/>to<sp/>scan<sp/>the<sp/>initial<sp/>room<sp/>to<sp/>retrieve<sp/>markers<sp/>info.<sp/>After<sp/>that,<sp/>in<sp/>principle<sp/>it<sp/>could<sp/>be<sp/>shutdown<sp/>as<sp/>`marker_detector`,<sp/>given<sp/>that<sp/>it<sp/>won&apos;t<sp/>be<sp/>used<sp/>anymore.<sp/></highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`ARMOR<sp/>Server`:<sp/>initially,<sp/>when<sp/>we<sp/>are<sp/>defining<sp/>the<sp/>ontology<sp/>objects<sp/>and<sp/>properties<sp/>(Abox);<sp/>later<sp/>after<sp/>every<sp/>location<sp/>change<sp/>of<sp/>the<sp/>robot<sp/>and<sp/>to<sp/>query<sp/>about<sp/>urgent/reachable<sp/>rooms.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`arm_controller`:<sp/>when<sp/>the<sp/>robot<sp/>has<sp/>to<sp/>scan<sp/>the<sp/>initial<sp/>room<sp/>and<sp/>when<sp/>it<sp/>has<sp/>to<sp/>check<sp/>a<sp/>room.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>States<sp/>diagram<sp/>##</highlight></codeline>
+<codeline><highlight class="normal">![states_diagram<sp/>drawio](https://user-images.githubusercontent.com/91679281/203871623-20364fd2-2646-4bc9-aca6-3f416d9bb0f7.png)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>this<sp/>diagram<sp/>is<sp/>shown<sp/>the<sp/>robot<sp/>behaviour,<sp/>implemented<sp/>through<sp/>a<sp/>state<sp/>machine<sp/>in<sp/>the<sp/>`smach_robot`<sp/>node.<sp/>The<sp/>node<sp/>relies<sp/>on<sp/>the<sp/>use<sp/>of<sp/>`smach_helper`<sp/>module,<sp/>which<sp/>decouples<sp/>the<sp/>state<sp/>machine<sp/>interface<sp/>from<sp/>the<sp/>computations<sp/>processes.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">After<sp/>having<sp/>built<sp/>the<sp/>map<sp/>in<sp/>the<sp/>`BUILD<sp/>MAP`<sp/>state,<sp/>it<sp/>passes<sp/>to<sp/>the<sp/>loop<sp/>of<sp/>the<sp/>Phase<sp/>2:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`REASONER`<sp/>:<sp/>queries<sp/>the<sp/>ontology<sp/>about<sp/>reachable<sp/>and<sp/>urgent<sp/>locations<sp/>to<sp/>decide<sp/>the<sp/>next<sp/>location.<sp/>If<sp/>the<sp/>battery<sp/>is<sp/>low,<sp/>the<sp/>next<sp/>location<sp/>is<sp/>always<sp/>the<sp/>charging<sp/>one.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`MOVE`:<sp/>it<sp/>moves<sp/>the<sp/>robot<sp/>to<sp/>the<sp/>target<sp/>location.<sp/>When<sp/>it<sp/>has<sp/>reached<sp/>the<sp/>location,<sp/>it<sp/>uploads<sp/>the<sp/>ontology.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>When<sp/>the<sp/>motion<sp/>is<sp/>finished<sp/>(i.e.<sp/>it<sp/>reached<sp/>the<sp/>target<sp/>location)<sp/>by<sp/>the<sp/>`MOVE`<sp/>node,<sp/>there<sp/>are<sp/>3<sp/>possible<sp/>transitions:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>`location_urgent_reached`:<sp/>the<sp/>location<sp/>should<sp/>be<sp/>checked<sp/>and<sp/>so<sp/>it<sp/>passes<sp/>to<sp/>the<sp/>`CHECK_LOCATION`<sp/>state.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>`location_not_urgent_reached`:<sp/>the<sp/>location<sp/>shouldn&apos;t<sp/>be<sp/>checked<sp/>so<sp/>it<sp/>passes<sp/>to<sp/>the<sp/>`REASONER`<sp/>state<sp/>to<sp/>decide<sp/>next<sp/>location.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>`charging_location_reached`:<sp/>the<sp/>robot<sp/>has<sp/>reached<sp/>the<sp/>charging<sp/>location<sp/>so<sp/>it<sp/>passes<sp/>to<sp/>the<sp/>`CHARGE`<sp/>state<sp/>to<sp/>recharge<sp/>the<sp/>battery.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`CHECK_LOCATION`:<sp/>it<sp/>checks<sp/>the<sp/>room<sp/>by<sp/>doing<sp/>a<sp/>full<sp/>rotation<sp/>of<sp/>the<sp/>arm<sp/>base.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`CHARGE`:<sp/>it<sp/>simply<sp/>simulate<sp/>the<sp/>battery<sp/>charging<sp/>by<sp/>wasting<sp/>time.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>Note<sp/>that,<sp/>except<sp/>for<sp/>the<sp/>`CHARGE`<sp/>state,<sp/>all<sp/>other<sp/>states<sp/>pass<sp/>to<sp/>the<sp/>`REASONER`<sp/>when<sp/>the<sp/>battery<sp/>is<sp/>low<sp/>(`battery_low`<sp/>transition),<sp/>leaving<sp/>their<sp/>task<sp/>uncompleted.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>Repository<sp/>Structure<sp/>#</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Package<sp/>files<sp/>##</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>repository<sp/>contains<sp/>a<sp/>ROS<sp/>package<sp/>named<sp/>`surveillance_robot`<sp/>that,<sp/>besides<sp/>this<sp/>README,<sp/>includes<sp/>the<sp/>following<sp/>resources.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[CMakeList.txt](CMakeList.txt):<sp/>File<sp/>to<sp/>configure<sp/>this<sp/>package.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[package.xml](package.xml):<sp/>File<sp/>to<sp/>configure<sp/>this<sp/>package.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[setup.py](setup.py):<sp/>File<sp/>to<sp/>`import`<sp/>python<sp/>modules<sp/>from<sp/>the<sp/>`utilities`<sp/>folder<sp/>into<sp/>the<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>files<sp/>in<sp/>the<sp/>`script`<sp/>folder.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[launcher/](launcher/):<sp/>Contains<sp/>the<sp/>configurations<sp/>to<sp/>launch<sp/>this<sp/>package.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[armor.launch](launcher/armor.launch):<sp/>It<sp/>launches<sp/>the<sp/>Armor<sp/>server.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[gazebo_rviz.launch](launcher/gazebo_rviz.launch):<sp/>It<sp/>launches<sp/>the<sp/>simulation<sp/>with<sp/>the<sp/>robot<sp/>model<sp/>both<sp/>in<sp/>rviz<sp/>and<sp/>in<sp/>gazebo.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[gmapping_movebase.launch](launcher/gmapping_movebase.launch):<sp/>It<sp/>launches<sp/>the<sp/>SLAM<sp/>Gmapping<sp/>and<sp/>the<sp/>MoveBase<sp/>nodes.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[assignment.launch](launcher/random_battery.launch):<sp/>It<sp/>launches<sp/>this<sp/>package<sp/>with<sp/>a<sp/>random-based<sp/>change<sp/>of<sp/>battery<sp/>state.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[msg/](msg/):<sp/>It<sp/>contains<sp/>the<sp/>custom<sp/>message<sp/>exchanged<sp/>through<sp/>ROS<sp/>topics.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[Room.msg](msg/Room.msg):<sp/>It<sp/>represents<sp/>the<sp/>informations<sp/>about<sp/>the<sp/>room.<sp/>(name,<sp/>coordinates,<sp/>connections)</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[RoomConnection.msg](msg/RoomConnection.msg):<sp/>It<sp/>is<sp/>the<sp/>message<sp/>representing<sp/>a<sp/>connection<sp/>among<sp/>a<sp/>door<sp/>and<sp/>a<sp/>location.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[srv/](srv/):<sp/>It<sp/>Contains<sp/>the<sp/>definition<sp/>of<sp/>each<sp/>server<sp/>used<sp/>by<sp/>this<sp/>software.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[RoomInformation.srv](srv/RoomInformation.srv):<sp/>It<sp/>defines<sp/>the<sp/>request<sp/>and<sp/>response<sp/>to<sp/>get<sp/>the<sp/>room<sp/>information<sp/>given<sp/>a<sp/>marker<sp/>id.<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[action/](action/):<sp/>It<sp/>contains<sp/>the<sp/>definition<sp/>of<sp/>each<sp/>action<sp/>server<sp/>used<sp/>by<sp/>this<sp/>software.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[ArmControl.action](action/Control.action):<sp/>It<sp/>defines<sp/>the<sp/>goal,<sp/>feedback<sp/>and<sp/>results<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>concerning<sp/>arm<sp/>motion<sp/>controlling.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[scripts/](scripts/):<sp/>It<sp/>contains<sp/>the<sp/>implementation<sp/>of<sp/>the<sp/>python<sp/>nodes.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[arm_controller.py](scripts/map_builder.py):<sp/>It<sp/>implements<sp/>the<sp/>action<sp/>server<sp/>to<sp/>move<sp/>the<sp/>arm<sp/>in<sp/>some<sp/>predefined<sp/>trajectory.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[smach_robot.py](scripts/gesture.py):<sp/>It<sp/>implements<sp/>the<sp/>state<sp/>machine<sp/>of<sp/>the<sp/>robot.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[robot_state.py](scripts/robot_state.py):<sp/>It<sp/>implements<sp/>the<sp/>battery<sp/>manager<sp/>of<sp/>the<sp/>robot.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[src/](src/):<sp/>It<sp/>contains<sp/>the<sp/>implementation<sp/>of<sp/>the<sp/>c++<sp/>nodes.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[marker_detector.cpp](src/marker_detector.cpp):<sp/>It<sp/>implements<sp/>the<sp/>node<sp/>to<sp/>detect<sp/>markers.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[marker_server.cpp](src/marker_server.cpp):<sp/>It<sp/>implements<sp/>the<sp/>service<sp/>to<sp/>get<sp/>markers<sp/>informations.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[utilities/surveillance_robot2/](utilities/surveillance_robot2/):<sp/>It<sp/>contains<sp/>auxiliary<sp/>python<sp/>files,<sp/>which<sp/>are<sp/>exploited<sp/>by<sp/>the<sp/>files<sp/>in<sp/>the<sp/>`scripts`<sp/>folder.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[architecture_name_mapper.py](scripts/architecture_name_mapper.py):<sp/>It<sp/>contains<sp/>the<sp/>name<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>of<sp/>some<sp/>*node*,<sp/>*topic*,<sp/>*server*,<sp/>*actions*<sp/>and<sp/>*parameters*<sp/>used<sp/>in<sp/>this<sp/>architecture.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[action_client_helper.py](scripts/action_client_helper.py):<sp/>It<sp/>defines<sp/>a<sp/>class<sp/>to<sp/>simplify<sp/>the<sp/>interaction<sp/>with<sp/>an<sp/>action<sp/>server.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>-<sp/>[smach_helper.py](scripts/smach_helper.py):<sp/>It<sp/>defines<sp/>a<sp/>class<sp/>to<sp/>simplify<sp/>state<sp/>machine<sp/>computations.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[worlds/](world/):<sp/>It<sp/>contains<sp/>the<sp/>assignment<sp/>world.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[urdf/](urdf/):<sp/>It<sp/>contains<sp/>the<sp/>robot<sp/>model.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[docs/](docs/):<sp/>It<sp/>contains<sp/>the<sp/>documentation<sp/>of<sp/>the<sp/>repository.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[ontologies/](ontologies/):<sp/>It<sp/>contains<sp/>the<sp/>ontology<sp/>used<sp/>in<sp/>this<sp/>software.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[config/](config/):<sp/>It<sp/>contains<sp/>the<sp/>motors<sp/>and<sp/>rviz<sp/>configuration<sp/>files.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>[param/](param/):<sp/>It<sp/>contains<sp/>the<sp/>files<sp/>to<sp/>configure<sp/>MoveBase.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Further<sp/>specifications<sp/>on<sp/>ROS<sp/>Custom<sp/>Messages,<sp/>Services<sp/>and<sp/>Actions<sp/>##</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>the<sp/>development<sp/>of<sp/>the<sp/>simulation,<sp/>some<sp/>custom<sp/>`msg`,<sp/>`srv`<sp/>and<sp/>`action`<sp/>have<sp/>been<sp/>created:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`Room.msg`:<sp/>it<sp/>represents<sp/>a<sp/>room,<sp/>with<sp/>name,<sp/>coordinates<sp/>and<sp/>connections.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`RoomConnection.msg`:<sp/>it<sp/>represents<sp/>a<sp/>connection<sp/>between<sp/>a<sp/>door<sp/>and<sp/>a<sp/>location<sp/>and<sp/>is<sp/>composed<sp/>of<sp/>two<sp/>`string`<sp/>objects.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`RoomInformations.srv`:<sp/>a<sp/>service<sp/>to<sp/>get<sp/>the<sp/>rooms<sp/>information<sp/>embedded<sp/>in<sp/>a<sp/>marker<sp/>ID.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>`ArmControl.action`:<sp/>an<sp/>action<sp/>to<sp/>interact<sp/>with<sp/>the<sp/>`arm_controller`<sp/>action<sp/>server.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>-<sp/>*goal*:<sp/>the<sp/>movement<sp/>command<sp/>among<sp/>some<sp/>predefined.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>-<sp/>*result*:<sp/>the<sp/>final<sp/>pose<sp/>reached<sp/>by<sp/>the<sp/>arm.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>-<sp/>*feedback*:<sp/>the<sp/>current<sp/>pose<sp/>reached<sp/>by<sp/>the<sp/>arm.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Dependencies<sp/>##</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>software<sp/>is<sp/>developed<sp/>with<sp/>a<sp/>[ROS<sp/>Noetic](http://wiki.ros.org/noetic)<sp/>environment<sp/>and<sp/>you<sp/>need<sp/>to<sp/>have<sp/>a<sp/>ROS<sp/>workspace<sp/>initialized<sp/>in<sp/>order<sp/>to<sp/>run<sp/>the<sp/>simulation.<sp/>Moreover<sp/>you<sp/>should<sp/>have<sp/>installed:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[roslaunch](http://wiki.ros.org/roslaunch),<sp/>to<sp/>launch<sp/>the<sp/>package.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[rospy](http://wiki.ros.org/rospy),<sp/>to<sp/>use<sp/>python<sp/>with<sp/>ROS.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[actionlib](http://wiki.ros.org/actionlib/DetailedDescription),<sp/>to<sp/>define</highlight></codeline>
+<codeline><highlight class="normal">[SimpleActionServer](http://docs.ros.org/en/jade/api/actionlib/html/classactionlib_1_1simple__action__server_1_1SimpleActionServer.html#a2013e3b4a6a3cb0b77bb31403e26f137)<sp/>and<sp/>use<sp/>[SimpleActionClient](https://docs.ros.org/en/api/actionlib/html/classactionlib_1_1simple__action__client_1_1SimpleActionClient.html).</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[ARMOR<sp/>Server](https://github.com/EmaroLab/armor),<sp/>a<sp/>ROS<sp/>integration<sp/>to<sp/>manipulate<sp/>online<sp/>OWL<sp/>ontologies,<sp/>which<sp/>can<sp/>be<sp/>installed<sp/>by<sp/>following<sp/>the<sp/>instructions<sp/>in<sp/>the<sp/>README.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[armor_py_api](https://github.com/EmaroLab/armor_py_api),<sp/>a<sp/>library<sp/>to<sp/>simplify<sp/>the<sp/>python<sp/>calls<sp/>to<sp/>the<sp/>ARMOR<sp/>Server,<sp/>which<sp/>can<sp/>be<sp/>installed<sp/>by<sp/>following<sp/>the<sp/>instructions<sp/>in<sp/>the<sp/>README.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[xterm](https://wiki.archlinux.org/title/Xterm),<sp/>a<sp/>terminal<sp/>simulator,<sp/>which<sp/>can<sp/>be<sp/>installed<sp/>by<sp/>running<sp/>from<sp/>the<sp/>terminal<sp/>`sudo<sp/>apt<sp/>install<sp/>-y<sp/>xterm`.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[smach](http://wiki.ros.org/smach),<sp/>a<sp/>state<sp/>machine<sp/>library<sp/>to<sp/>simulate<sp/>the<sp/>robot<sp/>behaviour,<sp/>which<sp/>can<sp/>be<sp/>installed<sp/>by<sp/>running<sp/>from<sp/>the<sp/>terminal<sp/>`sudo<sp/>apt-get<sp/>install<sp/>ros-noetic-smach-ros`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>[]</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Simulation<sp/>##</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>How<sp/>to<sp/>Run<sp/>###</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Once<sp/>assured<sp/>that<sp/>all<sp/>dependecies<sp/>are<sp/>installed,<sp/>follow<sp/>those<sp/>steps:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>1.<sp/>In<sp/>the<sp/>`src`<sp/>folder<sp/>of<sp/>your<sp/>ROS<sp/>workspace,<sp/>clone<sp/>this<sp/>repository<sp/>by<sp/>running<sp/>`git<sp/>clone<sp/>https://github.com/Mo-AH/surveillance_robot2`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>2.<sp/>Move<sp/>first<sp/>to<sp/>`src/surveillance_robot2/scripts`<sp/>and<sp/>then<sp/>to<sp/>`src/surveillance_robot2/utilities/surveillance_robot2`<sp/>and<sp/>run<sp/>a<sp/>`chmod<sp/>+x<sp/>&lt;script_name&gt;.py`<sp/>for<sp/>each<sp/>Python<sp/>module<sp/>in<sp/>both<sp/>folders.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>3.<sp/>Build<sp/>the<sp/>ROS<sp/>workspace<sp/>by<sp/>running<sp/>`catkin_make`<sp/>in<sp/>its<sp/>root<sp/>folder.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>4.<sp/>Launch<sp/>the<sp/>simulation:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>In<sp/>a<sp/>terminal,<sp/>launch<sp/>the<sp/>ARMOR<sp/>server<sp/>by<sp/>typing<sp/>`roslaunch<sp/>surveillance_robot2<sp/>armor.launch`.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>-<sp/>In<sp/>another<sp/>terminal,<sp/>launch<sp/>all<sp/>the<sp/>package<sp/>components<sp/>by<sp/>running<sp/>`roslaunch<sp/>surveillance_robot2<sp/>assignment.launch`.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">***Note:<sp/>This<sp/>is<sp/>due<sp/>to<sp/>a<sp/>problem<sp/>with<sp/>Armor,<sp/>which<sp/>doesn&apos;t<sp/>work<sp/>well<sp/>if<sp/>launched<sp/>together<sp/>with<sp/>the<sp/>other<sp/>components***</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Parameters<sp/>###</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">There<sp/>are<sp/>some<sp/>parameters<sp/>that<sp/>are<sp/>setted<sp/>by<sp/>default,<sp/>but<sp/>they<sp/>can<sp/>be<sp/>changed<sp/>to<sp/>meet<sp/>some<sp/>specification:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>`test/random_sense/active`:<sp/><sp/>It<sp/>is<sp/>a<sp/>boolean<sp/>value<sp/>that<sp/>defines<sp/>the<sp/>battery<sp/>mode:<sp/>True<sp/>for<sp/>randomly<sp/>change<sp/>the<sp/>state,<sp/>False<sp/>to<sp/>change<sp/>the<sp/>state<sp/>manually.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/><sp/>`test/random_sense/battery_time`:<sp/>It<sp/>indicates<sp/>the<sp/>time<sp/>passed<sp/>within<sp/>battery<sp/>state<sp/>changes<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>(i.e.,<sp/>low/high).<sp/>It<sp/>should<sp/>be<sp/>a<sp/>list<sp/>of<sp/>two<sp/>float<sp/>numbers,<sp/>i.e.,<sp/>`[min_time,<sp/>max_time]`<sp/>in<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>seconds,<sp/>and<sp/>the<sp/>time<sp/>passed<sp/>between<sp/>changes<sp/>in<sp/>battery<sp/>levels<sp/>will<sp/>be<sp/>a<sp/>random<sp/>value<sp/>within<sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/>such<sp/>an<sp/>interval.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/></highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>`test/charging_time`:<sp/><sp/>It<sp/>indicates<sp/>the<sp/>time<sp/>required<sp/>to<sp/>recharge<sp/>the<sp/>battery,<sp/>should<sp/>be<sp/>a<sp/>float<sp/>number.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>`map/total_markers`:<sp/>It<sp/>indicates<sp/>the<sp/>total<sp/>markers<sp/>to<sp/>be<sp/>found<sp/>in<sp/>the<sp/>initial<sp/>room.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Other<sp/>parameters<sp/>regarding<sp/>the<sp/>ontology,<sp/>such<sp/>as<sp/>starting<sp/>location,<sp/>charging<sp/>location<sp/>or<sp/>connections<sp/>list,<sp/>can<sp/>be<sp/>changed<sp/>directly<sp/>in<sp/>the<sp/>`architecture_name_mapper.py`<sp/>module.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Running<sp/>code<sp/>###</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">#<sp/>VIDEO<sp/>#</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>the<sp/>video,<sp/>there<sp/>is<sp/>the<sp/>demonstration<sp/>of<sp/>the<sp/>running<sp/>code.<sp/>It<sp/>shows<sp/>the<sp/>initial<sp/>phase<sp/>in<sp/>which<sp/>the<sp/>robot<sp/>does<sp/>a<sp/>complete<sp/>scan<sp/>of<sp/>the<sp/>room,<sp/>detecting<sp/>markers,<sp/>for<sp/>building<sp/>the<sp/>map<sp/>informations.<sp/>After<sp/>that,<sp/>it<sp/>starts<sp/>moving<sp/>following<sp/>the<sp/>surveillance<sp/>policy.<sp/>On<sp/>the<sp/>rviz<sp/>window<sp/>in<sp/>the<sp/>second<sp/>part<sp/>of<sp/>the<sp/>video,<sp/>is<sp/>shown<sp/>the<sp/>map<sp/>building<sp/>process<sp/>of<sp/>the<sp/>SLAM<sp/>Gmapping.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>Possible<sp/>improvements<sp/>##</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Most<sp/>of<sp/>the<sp/>system<sp/>limitations<sp/>are<sp/>caused<sp/>by<sp/>the<sp/>simulation<sp/>nature<sp/>of<sp/>the<sp/>software.</highlight></codeline>
+<codeline><highlight class="normal">For<sp/>example,<sp/>the<sp/>planner<sp/>and<sp/>controller<sp/>are<sp/>implemented<sp/>in<sp/>a<sp/>dummy<sp/>way:<sp/>the<sp/>plan<sp/>is<sp/>computed<sp/>with<sp/>random<sp/>points<sp/>and<sp/>the<sp/>motion<sp/>is<sp/>only<sp/>simulated,<sp/>without<sp/>having<sp/>a<sp/>real<sp/>effect.</highlight></codeline>
+<codeline><highlight class="normal">Also,<sp/>the<sp/>map<sp/>building<sp/>is<sp/>simulated<sp/>by<sp/>providing<sp/>the<sp/>connections<sp/>between<sp/>door<sp/>and<sp/>locations<sp/>in<sp/>a<sp/>parameter<sp/>before<sp/>launching<sp/>the<sp/>software<sp/>(`CONNECTION_LIST`<sp/>variable<sp/>in<sp/>`architecture_name_mapper.py`).</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">It<sp/>could<sp/>be<sp/>improved<sp/>in<sp/>several<sp/>ways:</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>It<sp/>may<sp/>be<sp/>more<sp/>appropriate<sp/>pass<sp/>directly<sp/>to<sp/>the<sp/>planner<sp/>with<sp/>the<sp/>charging<sp/>location<sp/>as<sp/>target,<sp/>instead<sp/>of<sp/>passing<sp/>by<sp/>the<sp/>reasoner.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Implement<sp/>a<sp/>GUI<sp/>interface<sp/>to<sp/>insert<sp/>manually<sp/>connections<sp/>between<sp/>location<sp/>and<sp/>doors.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Making<sp/>the<sp/>robot<sp/>aware<sp/>of<sp/>the<sp/>urgents<sp/>rooms<sp/>not<sp/>adjacent<sp/>and,<sp/>hence,<sp/>implement<sp/>a<sp/>real<sp/>planning<sp/>algorithm<sp/>that<sp/>detect<sp/>the<sp/>best<sp/>locations-path<sp/>to<sp/>follow<sp/>for<sp/>reaching<sp/>such<sp/>rooms.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>In<sp/>the<sp/>same<sp/>way<sp/>of<sp/>the<sp/>previous<sp/>point,<sp/>follow<sp/>a<sp/>locations-path<sp/>when<sp/>the<sp/>recharging<sp/>room<sp/>is<sp/>not<sp/>adjacent.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Implement<sp/>a<sp/>real<sp/>battery<sp/>management,<sp/>so<sp/>that<sp/>it<sp/>runs<sp/>out<sp/>proportionally<sp/>to<sp/>the<sp/>number<sp/>of<sp/>motions<sp/>and<sp/>to<sp/>the<sp/>time<sp/>passed.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>Implement<sp/>the<sp/>possibility<sp/>of<sp/>having<sp/>multiple<sp/>robots<sp/>that<sp/>cooperate<sp/>together<sp/>for<sp/>the<sp/>surveillance<sp/>purpose.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>When<sp/>checking<sp/>a<sp/>room,<sp/>do<sp/>something<sp/>instead<sp/>of<sp/>just<sp/>wasting<sp/>time,<sp/>for<sp/>example<sp/>look<sp/>around<sp/>for<sp/>markers.</highlight></codeline>
+<codeline><highlight class="normal"><sp/>-<sp/>When<sp/>interrupting<sp/>a<sp/>task<sp/>because<sp/>of<sp/>the<sp/>battery<sp/>low,<sp/>memorize<sp/>and<sp/>continue<sp/>it<sp/>after<sp/>having<sp/>recharged<sp/>the<sp/>battery.</highlight></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>Credits<sp/>##</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>package<sp/>has<sp/>been<sp/>created<sp/>starting<sp/>from<sp/>the<sp/>[Surveillance<sp/>Robot<sp/>package](https://github.com/Mo-AH/surveillance_robot),<sp/>that<sp/>has<sp/>been<sp/>developed<sp/>starting<sp/>from<sp/>the<sp/>[arch_skeleton](https://github.com/buoncubi/arch_skeleton)<sp/>repository,<sp/>created<sp/>by<sp/>prof.<sp/>Luca<sp/>Buoncompagni.<sp/>In<sp/>particular,<sp/>the<sp/>python<sp/>modules<sp/>that<sp/>has<sp/>been<sp/>used<sp/>are:</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>`robot_state`</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>-<sp/>`action_client_helper`</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">---</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">***Author***:<sp/>Mohammad<sp/>Al<sp/>Horany</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">***Email***:<sp/>s5271212@studenti.unige.it</highlight></codeline>
+    </programlisting>
+    <location file="README.md"/>
+  </compounddef>
+</doxygen>

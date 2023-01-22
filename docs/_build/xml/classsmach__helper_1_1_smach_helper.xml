@@ -1,0 +1,591 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classsmach__helper_1_1_smach_helper" kind="class" language="Python" prot="public">
+    <compoundname>smach_helper::SmachHelper</compoundname>
+      <sectiondef kind="public-static-attrib">
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a4134409f528a973aa36c2f8a69bca500" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::new_visit_time</definition>
+        <argsstring></argsstring>
+        <name>new_visit_time</name>
+        <initializer>=  str(int(time.time()))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="389" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="389" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a1680552e22f1010e21e4da3a7b1ccf9f" prot="public" static="yes" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::last_visit_time</definition>
+        <argsstring></argsstring>
+        <name>last_visit_time</name>
+        <initializer>=  self.format_query(self.armor_client.query.dataprop_b2_ind(&apos;visitedAt&apos;, location), &quot;TIMESTAMP&quot;)[0]</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="390" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="390" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1ab42dcde56c86d5cd1c9342acbac82770" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::charging_time</definition>
+        <argsstring></argsstring>
+        <name>charging_time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="62" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="62" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1aeb31ae11ad38c3e9a4e86c20f5c89630" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::battery_mutex</definition>
+        <argsstring></argsstring>
+        <name>battery_mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="68" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="68" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1ab46e701d479b70adb41dc2b32f0c7c90" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::battery_low</definition>
+        <argsstring></argsstring>
+        <name>battery_low</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="72" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="72" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1af19885c5657821fa33514cbd5859480d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::client_recharge</definition>
+        <argsstring></argsstring>
+        <name>client_recharge</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="76" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="76" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a4720aebb89d43d2a1609157fd8afda14" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::map_mutex</definition>
+        <argsstring></argsstring>
+        <name>map_mutex</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="82" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="82" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a7cd2924413d388f90ececd118424491a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::armor_client</definition>
+        <argsstring></argsstring>
+        <name>armor_client</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="87" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="87" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a7ff0b60adbaaf0709816d1922c4cb84a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::locations_list</definition>
+        <argsstring></argsstring>
+        <name>locations_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="93" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1aecc06ff1fd2c8eff66840038e41c959f" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::corridors_list</definition>
+        <argsstring></argsstring>
+        <name>corridors_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="94" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1abe927e2829f21e2ac112f485db4255bb" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::doors_list</definition>
+        <argsstring></argsstring>
+        <name>doors_list</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="95" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="95" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a918caefd226376ff76b81ecc6fd8533a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::current_location</definition>
+        <argsstring></argsstring>
+        <name>current_location</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="96" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="96" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a2e664742937f193e5d15792dbddeb7d4" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::target_location</definition>
+        <argsstring></argsstring>
+        <name>target_location</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="97" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="97" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a9e9f8a09bb38318296eed6660d9bbdca" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::urgent_locations</definition>
+        <argsstring></argsstring>
+        <name>urgent_locations</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="98" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a8962bbfd8e2f4ffa60ea4dceb8120146" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::locations_info</definition>
+        <argsstring></argsstring>
+        <name>locations_info</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="103" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a55f3d65000212b190dc10e8adf2dfe42" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::map_built</definition>
+        <argsstring></argsstring>
+        <name>map_built</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="104" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a3e2bc6ee728343c8898fc87cf1ba9392" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::armcontroller_client</definition>
+        <argsstring></argsstring>
+        <name>armcontroller_client</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="107" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="107" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1abde7dc17769ea2d377a3b6a856498437" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::movebase_client</definition>
+        <argsstring></argsstring>
+        <name>movebase_client</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="110" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a0082aa7e1dda2cfffdf14e13aa8d2b38" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::last_move_time</definition>
+        <argsstring></argsstring>
+        <name>last_move_time</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="158" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classsmach__helper_1_1_smach_helper_1a736794e0ed365c915c1d70a8551f59f3" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.SmachHelper::_battery_low</definition>
+        <argsstring></argsstring>
+        <name>_battery_low</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="412" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="412" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1afc795567f66ab254bf96f823f711713d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="59" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="59" bodyend="113"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1a5f9069e93b01946ee328796bdf45e229" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.build_map</definition>
+        <argsstring>(self)</argsstring>
+        <name>build_map</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method paired with BUILD_MAP state.
+    It assert the robot initial location, then waits for the map information making the camera-arm rotate.
+    Once map has been built, it disjoints all the individuals, initializes the timer of locations and the urgency threshold. </verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="114" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="114" bodyend="177"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1a8944d0d5fb431042f063a93360954c3e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.map_callback</definition>
+        <argsstring>(self, msg)</argsstring>
+        <name>map_callback</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>msg</type>
+          <defname>msg</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>The subscriber callback of the `/map/rooms&apos;` topic.
+It receives rooms information and store them.
+
+Args:
+    msg (Room) : msg containing informations about a room
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="178" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="178" bodyend="214"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1af1041e10406d9eea791ad7948891da67" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.decide_next_location</definition>
+        <argsstring>(self)</argsstring>
+        <name>decide_next_location</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method paired with the REASONER state.
+
+    It decides the next location by querying the ontology. The policy of the decision is the following:
+- If battery_low, next_location = charging location
+- If urgent locations nearby, next_location = most urgent reachable location
+- Else, next_location = random CORRIDOR among the reachable
+
+    Returns:
+next_location(str): location to reach</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="215" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="215" bodyend="255"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1a49a944727a9cdbf70c3c17ea088aed8a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.get_most_urgent</definition>
+        <argsstring>(self, reachable_locations)</argsstring>
+        <name>get_most_urgent</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>reachable_locations</type>
+          <defname>reachable_locations</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>This method is used by `decide_next_location()` and it returns the most urgent location among the ones given in input, if any, otherwhise it returns False.
+
+    Args:
+reachable_locations (str[]): The list of reachable locations
+  
+    Returns:
+most_urgent_location(str): The most urgent location among the reachable ones; if none of them are URGENT,
+                            this is None.</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="256" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="256" bodyend="289"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1ae6f2e4a2bc9cbf7fb6bc0973eb118a35" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.move_robot</definition>
+        <argsstring>(self, new_location)</argsstring>
+        <name>move_robot</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>new_location</type>
+          <defname>new_location</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method paired with the Move state.
+    It sends a goal to /move_base and checks the battery in the meanwhile.
+    Once arrived, it updates the robot location in the ontology (&quot;isIn&quot; object prop.) and the last time it moved (&quot;now&quot; data prop.)
+
+    Args:
+new_location (str): The goal location
+
+    Returns:
+bool(Bool): True if it finishes correctly, False if battery got low</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="290" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="290" bodyend="352"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1a982fb1b89ab77182d212bcc057c83817" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.check_location</definition>
+        <argsstring>(self, location)</argsstring>
+        <name>check_location</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>location</type>
+          <defname>location</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method paired with the CHECK_LOCATION state. It rotates the arm using the /control_arm action.
+    In the meanwhile, it gets the battery state and cancels the checking if battery got low.
+
+    Args:
+location (str[]): The location to check
+
+    Returns:
+bool (Bool): True if it finishes correctly, False if battery got low</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="353" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="353" bodyend="370"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1a76572b8cea9757dc71355d61d7b8eea8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.recharge</definition>
+        <argsstring>(self)</argsstring>
+        <name>recharge</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method used to send a request to the service that recharges the battery.</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="399" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="399" bodyend="417"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1a8553ebb74e473410fe2d2c96468bf556" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.battery_callback</definition>
+        <argsstring>(self, msg)</argsstring>
+        <name>battery_callback</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>msg</type>
+          <defname>msg</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>The subscriber of the `/state/battery_low/` topic.
+It acquires the changes of states of the battery.
+
+Args:
+    msg (Bool) : represents the battery state
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="418" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="418" bodyend="432"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1ad07ba944e30be1e21bcc0695b6b4ed2a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.update_ontology</definition>
+        <argsstring>(self)</argsstring>
+        <name>update_ontology</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method to apply the changes in the buffer and to synchronyze the reasoner.
+    It is not protected by mutex because it is called always by the manipulations methods
+    that already have the mutex.</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="433" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="433" bodyend="443"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classsmach__helper_1_1_smach_helper_1a1db0328ba5c4bacf4308788f4241e5cd" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_helper.SmachHelper.format_query</definition>
+        <argsstring>(old_list, type_of_object)</argsstring>
+        <name>format_query</name>
+        <param>
+          <type>old_list</type>
+          <defname>old_list</defname>
+        </param>
+        <param>
+          <type>type_of_object</type>
+          <defname>type_of_object</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Function to format a list of query strings, by extracting only the meaningful part.
+    
+    Args:
+       old_list (str[]): The list of queries to format.
+       type_of_object (str[]): The query type, that can be &apos;LOCATION&apos; or &apos;TIMESTAMP&apos;
+    
+    Returns:
+       formatted_list (str[]): The formatted list of queries.</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="445" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="445" bodyend="466"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>This class is the state machine helper. It loads the ontology, initializes
+    useful variables and provides methods to help the state machine in controlling the robot,
+    both in simulation and in the ontology. </verbatim> </para>
+    </detaileddescription>
+    <location file="utilities/surveillance_robot2/smach_helper.py" line="53" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="53" bodyend="466"/>
+    <listofallmembers>
+      <member refid="classsmach__helper_1_1_smach_helper_1afc795567f66ab254bf96f823f711713d" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>__init__</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a736794e0ed365c915c1d70a8551f59f3" prot="private" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>_battery_low</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a3e2bc6ee728343c8898fc87cf1ba9392" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>armcontroller_client</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a7cd2924413d388f90ececd118424491a" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>armor_client</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a8553ebb74e473410fe2d2c96468bf556" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>battery_callback</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1ab46e701d479b70adb41dc2b32f0c7c90" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>battery_low</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1aeb31ae11ad38c3e9a4e86c20f5c89630" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>battery_mutex</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a5f9069e93b01946ee328796bdf45e229" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>build_map</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1ab42dcde56c86d5cd1c9342acbac82770" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>charging_time</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a982fb1b89ab77182d212bcc057c83817" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>check_location</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1af19885c5657821fa33514cbd5859480d" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>client_recharge</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1aecc06ff1fd2c8eff66840038e41c959f" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>corridors_list</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a918caefd226376ff76b81ecc6fd8533a" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>current_location</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1af1041e10406d9eea791ad7948891da67" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>decide_next_location</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1abe927e2829f21e2ac112f485db4255bb" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>doors_list</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a1db0328ba5c4bacf4308788f4241e5cd" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>format_query</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a49a944727a9cdbf70c3c17ea088aed8a" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>get_most_urgent</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a0082aa7e1dda2cfffdf14e13aa8d2b38" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>last_move_time</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a1680552e22f1010e21e4da3a7b1ccf9f" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>last_visit_time</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a8962bbfd8e2f4ffa60ea4dceb8120146" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>locations_info</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a7ff0b60adbaaf0709816d1922c4cb84a" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>locations_list</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a55f3d65000212b190dc10e8adf2dfe42" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>map_built</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a8944d0d5fb431042f063a93360954c3e" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>map_callback</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a4720aebb89d43d2a1609157fd8afda14" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>map_mutex</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1ae6f2e4a2bc9cbf7fb6bc0973eb118a35" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>move_robot</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1abde7dc17769ea2d377a3b6a856498437" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>movebase_client</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a4134409f528a973aa36c2f8a69bca500" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>new_visit_time</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a76572b8cea9757dc71355d61d7b8eea8" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>recharge</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a2e664742937f193e5d15792dbddeb7d4" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>target_location</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1ad07ba944e30be1e21bcc0695b6b4ed2a" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>update_ontology</name></member>
+      <member refid="classsmach__helper_1_1_smach_helper_1a9e9f8a09bb38318296eed6660d9bbdca" prot="public" virt="non-virtual"><scope>smach_helper::SmachHelper</scope><name>urgent_locations</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

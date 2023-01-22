@@ -1,0 +1,66 @@
+.. Surveillance Robot 2 documentation master file, created by
+   sphinx-quickstart on Sun Jan 22 18:48:15 2023.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to Surveillance Robot 2's documentation!
+================================================
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+
+
+State Machine 
+======================
+.. automodule:: scripts.smach_robot
+   :members:
+
+State Machine Helper
+======================
+.. automodule:: utilities.surveillance_robot2.smach_helper
+   :members:
+
+Arm Controller 
+=======================
+.. automodule:: scripts.arm_controller
+   :members:
+
+
+Robot State 
+=====================
+.. automodule:: scripts.robot_state
+   :members:
+
+
+Marker Detector 
+=================
+.. doxygenfile:: marker_detector.cpp
+:project: surveillance_robot2
+
+
+Marker Server
+=================
+.. doxygenfile:: marker_server.cpp
+:project: surveillance_robot2
+
+
+Architecture Name Mapper 
+==========================================
+.. automodule:: utilities.surveillance_robot2.architecture_name_mapper
+   :members:
+
+
+Action Client Helper 
+==========================================
+.. automodule:: utilities.surveillance_robot2.action_client_helper
+   :members:

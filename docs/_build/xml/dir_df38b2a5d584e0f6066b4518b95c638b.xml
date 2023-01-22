@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="dir_df38b2a5d584e0f6066b4518b95c638b" kind="dir">
+    <compoundname>utilities</compoundname>
+    <innerdir refid="dir_4fb52e138fea9e0f6b09ed5af7e4c9f9">utilities/surveillance_robot2</innerdir>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="utilities/"/>
+  </compounddef>
+</doxygen>

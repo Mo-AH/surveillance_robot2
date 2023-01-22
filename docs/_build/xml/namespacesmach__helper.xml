@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespacesmach__helper" kind="namespace" language="Python">
+    <compoundname>smach_helper</compoundname>
+    <innerclass refid="classsmach__helper_1_1_smach_helper" prot="public">smach_helper::SmachHelper</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacesmach__helper_1ac0238a290363a3c53b003b434aece59a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_helper.LOG_TAG</definition>
+        <argsstring></argsstring>
+        <name>LOG_TAG</name>
+        <initializer>=  anm.NODE_SMACH_ROBOT</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="49" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="49" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="namespacesmach__helper_1af081b4dc5082916516bafd9263d3070e" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float smach_helper.LOOP_SLEEP_TIME</definition>
+        <argsstring></argsstring>
+        <name>LOOP_SLEEP_TIME</name>
+        <initializer>=  0.3</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="utilities/surveillance_robot2/smach_helper.py" line="50" column="1" bodyfile="utilities/surveillance_robot2/smach_helper.py" bodystart="50" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>.. module:: smach_helper
+  :platform: Unix 
+  :synopsis: Python module for the helper class, used by the module :mod:`smach_robot`
+.. moduleauthor:: Mohammad Al Horany, 5271212@studenti.unige.it
+
+This module can be considered as the core of the state machine, by helping it to process its computation.
+It implements a specific method for every state plus some other useful method.
+It exchanges information with the ontology with the api provided by the `*armor_api* &lt;https://github.com/EmaroLab/armor_py_api&gt;`_ library.
+It builds the topological map, gets the battery state and controls the robot and arm movements 
+Subscriber of:
+- /state/get_battery
+- /map/connections
+
+Service client of:
+- /state/charge_battery
+
+Action client of:
+- /move_base
+- /control_arm</verbatim> </para>
+    </detaileddescription>
+    <location file="utilities/surveillance_robot2/smach_helper.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

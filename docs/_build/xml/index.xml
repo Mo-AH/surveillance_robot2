@@ -1,0 +1,224 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.8.17">
+  <compound refid="classaction__client__helper_1_1_action_client_helper" kind="class"><name>action_client_helper::ActionClientHelper</name>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a5f4a29e3f31ad446f1a13d906092fe54" kind="variable"><name>_service_name</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a3c47744d499441fcb3ef92104e445946" kind="variable"><name>_mutex</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a618adbf9a58fda49097e9229a15847ad" kind="variable"><name>_client</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a1398dd6e252659aa85b9a0c26eb117a1" kind="variable"><name>_external_done_cb</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a9a20cbcb9fc1a9371b8322058503f150" kind="variable"><name>_external_feedback_cb</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1af41ada341940aba0374dc9189834c690" kind="variable"><name>_is_running</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a0446d75db9c3c3c4b91be492d739cfa4" kind="variable"><name>_is_done</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a310ed8f39be945e28d9befbdb11ffcee" kind="variable"><name>_results</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a867ebd6d55b3e6168c3bbc5d78a02532" kind="function"><name>__init__</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1ab610751037cae773ef35e6ae90bfe4fb" kind="function"><name>send_goal</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1ae44c0eb0137424d806d9770de487fd31" kind="function"><name>cancel_goals</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a4fee602be4c2d7aff2cb569f2c981789" kind="function"><name>reset_client_states</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a2c7f8aa27894c5774eefac64ba0fdafe" kind="function"><name>is_done</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a5c5b45ef646fc47baeae9461a574169c" kind="function"><name>is_running</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1a967cdd946ea952aff0a803710bdbe98b" kind="function"><name>get_results</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1ae25ecf8976b572b56b23d4ad1e66ad4c" kind="function"><name>_feedback_callback</name></member>
+    <member refid="classaction__client__helper_1_1_action_client_helper_1af14c9f4480e98342f69eeb32d6a6c8d3" kind="function"><name>_done_callback</name></member>
+  </compound>
+  <compound refid="classarm__controller_1_1_arm_controller_action" kind="class"><name>arm_controller::ArmControllerAction</name>
+    <member refid="classarm__controller_1_1_arm_controller_action_1acc22f4a62f51f72774fabca70953d04a" kind="variable"><name>arm_base_pub</name></member>
+    <member refid="classarm__controller_1_1_arm_controller_action_1a61ce6d755dceb53b54ec20e3e03eb457" kind="variable"><name>arm1_pub</name></member>
+    <member refid="classarm__controller_1_1_arm_controller_action_1ad42cc43cffb508ab5958e46bd69090ad" kind="variable"><name>arm2_pub</name></member>
+    <member refid="classarm__controller_1_1_arm_controller_action_1a782ea8945d15d3bdf926bd322d92116d" kind="variable"><name>scan_poses</name></member>
+    <member refid="classarm__controller_1_1_arm_controller_action_1a7be5a65536a6da2423f284637e43a584" kind="variable"><name>_as</name></member>
+    <member refid="classarm__controller_1_1_arm_controller_action_1a9af7cc1e6744de8932aa0b45582dde69" kind="function"><name>__init__</name></member>
+    <member refid="classarm__controller_1_1_arm_controller_action_1a2d475183343c49a07fc5644955e9c8fd" kind="function"><name>execute_callback</name></member>
+    <member refid="classarm__controller_1_1_arm_controller_action_1a6bb3edd4c20d9ca0b2f211bd153ac040" kind="function"><name>initialize_scan_poses</name></member>
+  </compound>
+  <compound refid="class_aruco_marker_detector" kind="class"><name>ArucoMarkerDetector</name>
+    <member refid="class_aruco_marker_detector_1aa4afd26055cc663ce1c69cbc3d623a6d" kind="variable"><name>nh_</name></member>
+    <member refid="class_aruco_marker_detector_1a108d78444cfe633ff25dcc0544a198ac" kind="variable"><name>it_</name></member>
+    <member refid="class_aruco_marker_detector_1a6e904da96c9074156d9a66d36e97e02f" kind="variable"><name>image_sub</name></member>
+    <member refid="class_aruco_marker_detector_1a2f4a722895064d8fd9cbc4b984b80f22" kind="variable"><name>detector</name></member>
+    <member refid="class_aruco_marker_detector_1a7eecd938f4499ab88feeba1f77cc0d38" kind="variable"><name>markers_detected</name></member>
+    <member refid="class_aruco_marker_detector_1ab3d9529dcf294441459eb6d65b91b40d" kind="variable"><name>markers_ids</name></member>
+    <member refid="class_aruco_marker_detector_1af933305bc7624814b7a77d975eef2dea" kind="variable"><name>total_markers</name></member>
+    <member refid="class_aruco_marker_detector_1a0cec8058ff14b949453c1ea0755c0bb5" kind="variable"><name>room_info_pub</name></member>
+    <member refid="class_aruco_marker_detector_1a1903e982e78d4da00654ecaeaad6514a" kind="variable"><name>marker_info_client</name></member>
+    <member refid="class_aruco_marker_detector_1aee12849ab1970be736e68016754f0a96" kind="function"><name>ArucoMarkerDetector</name></member>
+    <member refid="class_aruco_marker_detector_1aabb89f779b89cbf945ab0db2f10559a2" kind="function"><name>~ArucoMarkerDetector</name></member>
+    <member refid="class_aruco_marker_detector_1a5dca165d1abc9153570405feef5c4835" kind="function"><name>imageCallback</name></member>
+  </compound>
+  <compound refid="classsmach__robot_1_1_build_map" kind="class"><name>smach_robot::BuildMap</name>
+    <member refid="classsmach__robot_1_1_build_map_1a7c28abee5ae0fcfcf60cb1b5bd15fd5d" kind="variable"><name>smach_helper</name></member>
+    <member refid="classsmach__robot_1_1_build_map_1a14d22772140389c3600d9ca21eff4b82" kind="function"><name>__init__</name></member>
+    <member refid="classsmach__robot_1_1_build_map_1a6668e229cea218ef3ea793d00b42d467" kind="function"><name>execute</name></member>
+  </compound>
+  <compound refid="classsmach__robot_1_1_charge" kind="class"><name>smach_robot::Charge</name>
+    <member refid="classsmach__robot_1_1_charge_1afb77ed6de9dbe890aa7caf77a55b23ab" kind="variable"><name>smach_helper</name></member>
+    <member refid="classsmach__robot_1_1_charge_1a2db560aa5f1a2101bbba2ff688e91374" kind="function"><name>__init__</name></member>
+    <member refid="classsmach__robot_1_1_charge_1a95c301d28dc9bf6c7b05bb9d859989b2" kind="function"><name>execute</name></member>
+  </compound>
+  <compound refid="classsmach__robot_1_1_check_location" kind="class"><name>smach_robot::CheckLocation</name>
+    <member refid="classsmach__robot_1_1_check_location_1ab7d15e447675b8ffaaffe5a72232ed6a" kind="variable"><name>smach_helper</name></member>
+    <member refid="classsmach__robot_1_1_check_location_1a69389f4794981c81a56b06ddb43f563c" kind="function"><name>__init__</name></member>
+    <member refid="classsmach__robot_1_1_check_location_1a92ab1d7bce696c604109eb342514639d" kind="function"><name>execute</name></member>
+  </compound>
+  <compound refid="classsmach__robot_1_1_move" kind="class"><name>smach_robot::Move</name>
+    <member refid="classsmach__robot_1_1_move_1aa998d50a160c1c1e6d1c5ee1d077b825" kind="variable"><name>smach_helper</name></member>
+    <member refid="classsmach__robot_1_1_move_1a9844ca48db1006654008f68e64c8184e" kind="function"><name>__init__</name></member>
+    <member refid="classsmach__robot_1_1_move_1ac21c1c453f91d926230c85b329016840" kind="function"><name>execute</name></member>
+  </compound>
+  <compound refid="classsmach__robot_1_1_reasoner" kind="class"><name>smach_robot::Reasoner</name>
+    <member refid="classsmach__robot_1_1_reasoner_1ae3b9e52bebff27b669a281239f7ca611" kind="variable"><name>smach_helper</name></member>
+    <member refid="classsmach__robot_1_1_reasoner_1abcdcdce4f7eb52821a6f9eaab9bfb90e" kind="function"><name>__init__</name></member>
+    <member refid="classsmach__robot_1_1_reasoner_1ae5f61d8789980be02e04f3e95020fc75" kind="function"><name>execute</name></member>
+  </compound>
+  <compound refid="classrobot__state_1_1_robot_state" kind="class"><name>robot_state::RobotState</name>
+    <member refid="classrobot__state_1_1_robot_state_1a8bc631b7bb73c859b421baac40f5d1b4" kind="variable"><name>_pose</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1ad29f17e47b96d563a35dcef6a6589561" kind="variable"><name>_battery_low</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1ac2339c12d50f88cf18227fc4c5257912" kind="variable"><name>_randomness</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1ae99ff3b992e7298c149e8585d696cafe" kind="variable"><name>_random_battery_time</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1a31a566ca92834a68b084fd6e69276c89" kind="variable"><name>charging_time</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1aa31fcdca351d627abc93a41d74d60545" kind="function"><name>__init__</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1a9ac301be7505305d99a8bd6affa74dff" kind="function"><name>battery_publisher</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1ad3e76a87605d4658176a80d72a8ffaeb" kind="function"><name>recharge</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1a40bc587c7996a55d28f396cfc8e78861" kind="function"><name>_random_battery_notifier</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1aa4c736bd6a4ef9eedf6050cd422fa30f" kind="function"><name>_manual_battery_notifier</name></member>
+    <member refid="classrobot__state_1_1_robot_state_1a711600fd38968da59af8f96fefa37835" kind="function"><name>_print_info</name></member>
+  </compound>
+  <compound refid="classsmach__helper_1_1_smach_helper" kind="class"><name>smach_helper::SmachHelper</name>
+    <member refid="classsmach__helper_1_1_smach_helper_1a4134409f528a973aa36c2f8a69bca500" kind="variable"><name>new_visit_time</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a1680552e22f1010e21e4da3a7b1ccf9f" kind="variable"><name>last_visit_time</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1ab42dcde56c86d5cd1c9342acbac82770" kind="variable"><name>charging_time</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1aeb31ae11ad38c3e9a4e86c20f5c89630" kind="variable"><name>battery_mutex</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1ab46e701d479b70adb41dc2b32f0c7c90" kind="variable"><name>battery_low</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1af19885c5657821fa33514cbd5859480d" kind="variable"><name>client_recharge</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a4720aebb89d43d2a1609157fd8afda14" kind="variable"><name>map_mutex</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a7cd2924413d388f90ececd118424491a" kind="variable"><name>armor_client</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a7ff0b60adbaaf0709816d1922c4cb84a" kind="variable"><name>locations_list</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1aecc06ff1fd2c8eff66840038e41c959f" kind="variable"><name>corridors_list</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1abe927e2829f21e2ac112f485db4255bb" kind="variable"><name>doors_list</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a918caefd226376ff76b81ecc6fd8533a" kind="variable"><name>current_location</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a2e664742937f193e5d15792dbddeb7d4" kind="variable"><name>target_location</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a9e9f8a09bb38318296eed6660d9bbdca" kind="variable"><name>urgent_locations</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a8962bbfd8e2f4ffa60ea4dceb8120146" kind="variable"><name>locations_info</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a55f3d65000212b190dc10e8adf2dfe42" kind="variable"><name>map_built</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a3e2bc6ee728343c8898fc87cf1ba9392" kind="variable"><name>armcontroller_client</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1abde7dc17769ea2d377a3b6a856498437" kind="variable"><name>movebase_client</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a0082aa7e1dda2cfffdf14e13aa8d2b38" kind="variable"><name>last_move_time</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a736794e0ed365c915c1d70a8551f59f3" kind="variable"><name>_battery_low</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1afc795567f66ab254bf96f823f711713d" kind="function"><name>__init__</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a5f9069e93b01946ee328796bdf45e229" kind="function"><name>build_map</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a8944d0d5fb431042f063a93360954c3e" kind="function"><name>map_callback</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1af1041e10406d9eea791ad7948891da67" kind="function"><name>decide_next_location</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a49a944727a9cdbf70c3c17ea088aed8a" kind="function"><name>get_most_urgent</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1ae6f2e4a2bc9cbf7fb6bc0973eb118a35" kind="function"><name>move_robot</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a982fb1b89ab77182d212bcc057c83817" kind="function"><name>check_location</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a76572b8cea9757dc71355d61d7b8eea8" kind="function"><name>recharge</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a8553ebb74e473410fe2d2c96468bf556" kind="function"><name>battery_callback</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1ad07ba944e30be1e21bcc0695b6b4ed2a" kind="function"><name>update_ontology</name></member>
+    <member refid="classsmach__helper_1_1_smach_helper_1a1db0328ba5c4bacf4308788f4241e5cd" kind="function"><name>format_query</name></member>
+  </compound>
+  <compound refid="namespaceaction__client__helper" kind="namespace"><name>action_client_helper</name>
+    <member refid="namespaceaction__client__helper_1ade3bf8dd14ddc2ec43d2482069a214c1" kind="variable"><name>LOG_TAG</name></member>
+  </compound>
+  <compound refid="namespacearchitecture__name__mapper" kind="namespace"><name>architecture_name_mapper</name>
+    <member refid="namespacearchitecture__name__mapper_1a58fb9f626ce1a7ae390c3ebf16d7c99e" kind="variable"><name>PARAM_RANDOM_ACTIVE</name></member>
+    <member refid="namespacearchitecture__name__mapper_1ae483a062da5b345ed8d19fb131659652" kind="variable"><name>PARAM_CHARGING_TIME</name></member>
+    <member refid="namespacearchitecture__name__mapper_1aa59c77c32412800a52ff15d1644f4b7c" kind="variable"><name>TOPIC_CONNECTIONS</name></member>
+    <member refid="namespacearchitecture__name__mapper_1ac1dd8ba2f441d77900f06357b29a3243" kind="variable"><name>ONTOLOGY_FILENAME</name></member>
+    <member refid="namespacearchitecture__name__mapper_1acc930521568ad5810c688d82e37a1a4c" kind="variable"><name>ONTOLOGY_IRI</name></member>
+    <member refid="namespacearchitecture__name__mapper_1a59391e451e60c799a682455e20799ec1" kind="variable"><name>ROBOT_NAME</name></member>
+    <member refid="namespacearchitecture__name__mapper_1a363df6746c1a2d26d262bdb4964efb5d" kind="variable"><name>STARTING_LOCATION</name></member>
+    <member refid="namespacearchitecture__name__mapper_1a2d2db53759ef93bb87b920e79ab120d1" kind="variable"><name>CHARGING_LOCATION</name></member>
+    <member refid="namespacearchitecture__name__mapper_1a9c526fef763b8c71a5c07777d4491b30" kind="variable"><name>URGENCY_THRESHOLD</name></member>
+    <member refid="namespacearchitecture__name__mapper_1a5353676d9f06226f9481f84d20f852e0" kind="variable"><name>NODE_ROBOT_STATE</name></member>
+    <member refid="namespacearchitecture__name__mapper_1a18a0238cc5f53bea8e8b27cc4383afdb" kind="variable"><name>NODE_SMACH_ROBOT</name></member>
+    <member refid="namespacearchitecture__name__mapper_1a15cea197e83119d886c4338d92f863e7" kind="variable"><name>TOPIC_BATTERY_LOW</name></member>
+    <member refid="namespacearchitecture__name__mapper_1a6655b3b488322d769ab90dfa9645ac34" kind="variable"><name>SERVER_CHARGE</name></member>
+    <member refid="namespacearchitecture__name__mapper_1acf3d1cdb1ad7b874c11dbb46aaa4346f" kind="variable"><name>PARAM_BATTERY_TIME</name></member>
+    <member refid="namespacearchitecture__name__mapper_1a89a559d690ed18a6f5148838a56816e4" kind="function"><name>tag_log</name></member>
+  </compound>
+  <compound refid="namespacearm__controller" kind="namespace"><name>arm_controller</name>
+    <member refid="namespacearm__controller_1a46b3fdd5ce2cf37472179901f1a7e1ef" kind="variable"><name>BACK_TO_HOME_POSE</name></member>
+    <member refid="namespacearm__controller_1a05e57ea0a4a9f2985bf209c445275d4d" kind="variable"><name>COMPLETE_SCAN</name></member>
+    <member refid="namespacearm__controller_1a6a905db2f8dd3dc3af5fa5b0567c84a5" kind="variable"><name>SIMPLE_ROTATION</name></member>
+    <member refid="namespacearm__controller_1a7e9011db1937f30727e2cd33503a831f" kind="variable"><name>log_level</name></member>
+  </compound>
+  <compound refid="namespaceconf" kind="namespace"><name>conf</name>
+    <member refid="conf_8py_1a332f430461432dc465213f884a1e4967" kind="variable"><name>shell</name></member>
+    <member refid="conf_8py_1a45653c983098153b78e33600e39230eb" kind="variable"><name>project</name></member>
+    <member refid="conf_8py_1a33fa97cf51dcb25970fbf53f10159589" kind="variable"><name>copyright</name></member>
+    <member refid="conf_8py_1a637c239d256432248aa8d9f3ab0b8c52" kind="variable"><name>author</name></member>
+    <member refid="conf_8py_1a325dc746d8bf05c54d26351c35a21d90" kind="variable"><name>release</name></member>
+    <member refid="conf_8py_1ae475e080536acb271a0a0efe56c3ba42" kind="variable"><name>extensions</name></member>
+    <member refid="conf_8py_1ae850ae634911b713e036b43894fdd525" kind="variable"><name>templates_path</name></member>
+    <member refid="conf_8py_1a7ad48fb6f3e9b129c02346ea0d3527c1" kind="variable"><name>exclude_patterns</name></member>
+    <member refid="conf_8py_1a3117edf4443d9b8c70a9f0f44294ba79" kind="variable"><name>highlight_language</name></member>
+    <member refid="conf_8py_1a10af2a769eb3bd3322e874f677e435b1" kind="variable"><name>source_suffix</name></member>
+    <member refid="conf_8py_1a6fcd7e5236f355b1e1a55f9d95988810" kind="variable"><name>master_doc</name></member>
+    <member refid="conf_8py_1a6c3bfcc1a44546c1c75ce20f55bd0fd6" kind="variable"><name>html_theme</name></member>
+    <member refid="conf_8py_1af4fb5d8851ccaade135c2668dd3ced41" kind="variable"><name>html_static_path</name></member>
+    <member refid="conf_8py_1a8375f4f963de3ac8026eaa9beced9564" kind="variable"><name>intersphinx_mapping</name></member>
+    <member refid="conf_8py_1a8fe7f0d85f975f4ecba5cb6066959a09" kind="variable"><name>todo_include_todos</name></member>
+    <member refid="conf_8py_1acb47d2c0c2904fa7d36b63142533f383" kind="variable"><name>breathe_projects</name></member>
+    <member refid="conf_8py_1a6eba2d2c7ae923054b1c49e686ec89b9" kind="variable"><name>breathe_default_project</name></member>
+    <member refid="conf_8py_1a54585428ce84441199d9dfd7087e2243" kind="variable"><name>breathe_default_members</name></member>
+  </compound>
+  <compound refid="namespacerobot__state" kind="namespace"><name>robot_state</name>
+    <member refid="namespacerobot__state_1aef2053a70f6aeb26884ba31b083afac0" kind="variable"><name>LOG_TAG</name></member>
+  </compound>
+  <compound refid="namespacesetup" kind="namespace"><name>setup</name>
+    <member refid="setup_8py_1a504ffa482edfe0eff08f64b2f5dff0e9" kind="variable"><name>setup_args</name></member>
+  </compound>
+  <compound refid="namespacesmach__helper" kind="namespace"><name>smach_helper</name>
+    <member refid="namespacesmach__helper_1ac0238a290363a3c53b003b434aece59a" kind="variable"><name>LOG_TAG</name></member>
+    <member refid="namespacesmach__helper_1af081b4dc5082916516bafd9263d3070e" kind="variable"><name>LOOP_SLEEP_TIME</name></member>
+  </compound>
+  <compound refid="namespacesmach__robot" kind="namespace"><name>smach_robot</name>
+    <member refid="namespacesmach__robot_1a51e9d0438e0884fc93473ddeeac4b9c2" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="index_8rst_8txt" kind="file"><name>index.rst.txt</name>
+    <member refid="index_8rst_8txt_1ae4355d9dd4e7dc03f2fd76ef6ec38cbb" kind="variable"><name>file</name></member>
+    <member refid="index_8rst_8txt_1a01c734745043c0df26a699c745715c35" kind="variable"><name>Jan</name></member>
+  </compound>
+  <compound refid="_c_make_lists_8txt" kind="file"><name>CMakeLists.txt</name>
+    <member refid="_c_make_lists_8txt_1ad9fba07f22d2badacb324d19bb77c776" kind="function"><name>cmake_minimum_required</name></member>
+  </compound>
+  <compound refid="conf_8py" kind="file"><name>conf.py</name>
+  </compound>
+  <compound refid="_r_e_a_d_m_e_8md" kind="file"><name>README.md</name>
+  </compound>
+  <compound refid="arm__controller_8py" kind="file"><name>arm_controller.py</name>
+  </compound>
+  <compound refid="robot__state_8py" kind="file"><name>robot_state.py</name>
+  </compound>
+  <compound refid="smach__robot_8py" kind="file"><name>smach_robot.py</name>
+  </compound>
+  <compound refid="setup_8py" kind="file"><name>setup.py</name>
+  </compound>
+  <compound refid="marker__detector_8cpp" kind="file"><name>marker_detector.cpp</name>
+    <member refid="marker__detector_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="marker__server_8cpp" kind="file"><name>marker_server.cpp</name>
+    <member refid="marker__server_8cpp_1a60a355151e74cb865ae7b457a0b350ca" kind="function"><name>markerCallback</name></member>
+    <member refid="marker__server_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="action__client__helper_8py" kind="file"><name>action_client_helper.py</name>
+  </compound>
+  <compound refid="architecture__name__mapper_8py" kind="file"><name>architecture_name_mapper.py</name>
+  </compound>
+  <compound refid="smach__helper_8py" kind="file"><name>smach_helper.py</name>
+  </compound>
+  <compound refid="md__r_e_a_d_m_e" kind="page"><name>md_README</name>
+  </compound>
+  <compound refid="dir_45b9293d3daaa82c00b5908f14ebb805" kind="dir"><name>_build</name>
+  </compound>
+  <compound refid="dir_02bdb4005edb5055ba0ef39c3e2b4a3d" kind="dir"><name>_build/html/_sources</name>
+  </compound>
+  <compound refid="dir_63358181ce567149a79d24bdd45b3e93" kind="dir"><name>_build/html</name>
+  </compound>
+  <compound refid="dir_53e6fa9553ac22a5646d2a2b2d7b97a1" kind="dir"><name>scripts</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+  <compound refid="dir_4fb52e138fea9e0f6b09ed5af7e4c9f9" kind="dir"><name>utilities/surveillance_robot2</name>
+  </compound>
+  <compound refid="dir_df38b2a5d584e0f6066b4518b95c638b" kind="dir"><name>utilities</name>
+  </compound>
+</doxygenindex>

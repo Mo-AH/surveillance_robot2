@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="architecture__name__mapper_8py" kind="file" language="Python">
+    <compoundname>architecture_name_mapper.py</compoundname>
+    <innernamespace refid="namespacearchitecture__name__mapper">architecture_name_mapper</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1" refid="namespacearchitecture__name__mapper" refkind="compound"><highlight class="comment">#!/usr/bin/env<sp/>python</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="stringliteral">&quot;&quot;&quot;</highlight></codeline>
+<codeline lineno="3"><highlight class="stringliteral">..<sp/>module::<sp/>architecture_name_mapper</highlight></codeline>
+<codeline lineno="4"><highlight class="stringliteral"><sp/><sp/>:platform:<sp/>Unix<sp/></highlight></codeline>
+<codeline lineno="5"><highlight class="stringliteral"><sp/><sp/>:synopsis:<sp/>Python<sp/>module<sp/>for<sp/>the<sp/>architecture<sp/>name<sp/>mapper</highlight></codeline>
+<codeline lineno="6"><highlight class="stringliteral">..<sp/>moduleauthor::<sp/>Mohammad<sp/>Al<sp/>Horany,<sp/>5271212@studenti.unige.it</highlight></codeline>
+<codeline lineno="7"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="8"><highlight class="stringliteral">In<sp/>this<sp/>module<sp/>are<sp/>defined<sp/>the<sp/>names<sp/>of<sp/>all<sp/>parameters,<sp/>nodes,<sp/>topics,<sp/>services<sp/>and<sp/>action<sp/>servers<sp/>of<sp/>the<sp/>architecture.</highlight></codeline>
+<codeline lineno="9"><highlight class="stringliteral">Also,<sp/>it<sp/>stores<sp/>the<sp/>data<sp/>information<sp/>about<sp/>the<sp/>ontology<sp/>and<sp/>the<sp/>map.</highlight></codeline>
+<codeline lineno="10"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="11"><highlight class="stringliteral">&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight><highlight class="keyword">import</highlight><highlight class="normal"><sp/>rospy</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"></highlight><highlight class="comment">#---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="16"><highlight class="normal"></highlight><highlight class="comment">#<sp/>PARAMETERS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight><highlight class="comment">#<sp/>---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="18"><highlight class="normal"></highlight><highlight class="comment">#<sp/>The<sp/>name<sp/>of<sp/>a<sp/>boolean<sp/>parameter<sp/>to<sp/>active<sp/>random<sp/>testing.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight><highlight class="comment">#<sp/>If<sp/>the<sp/>value<sp/>is<sp/>`False`<sp/>a<sp/>keyboard-based<sp/>interface<sp/>will<sp/>be<sp/>used<sp/>to<sp/>produce<sp/>stimulus<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"></highlight><highlight class="comment">#<sp/>(i.e.,<sp/>speech,<sp/>gesture<sp/>and<sp/>battery<sp/>signals).<sp/>Instead,<sp/>random<sp/>stimulus<sp/>will<sp/>be<sp/>generate<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="21"><highlight class="normal"></highlight><highlight class="comment">#<sp/>if<sp/>`True`.<sp/>In<sp/>the<sp/>latter<sp/>case,<sp/>the<sp/>architecture<sp/>also<sp/>requires<sp/>all<sp/>the<sp/>parameters<sp/></highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight><highlight class="comment">#<sp/>with<sp/>a<sp/>the<sp/>scope<sp/>`test/random_sense/*`,<sp/>which<sp/>are<sp/>not<sp/>used<sp/>if<sp/>`False`.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="23"><highlight class="normal">PARAM_RANDOM_ACTIVE<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;test/random_sense/active&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight><highlight class="comment">#<sp/>Parameter<sp/>to<sp/>set<sp/>the<sp/>time<sp/>required<sp/>for<sp/>charging<sp/>the<sp/>battery<sp/>(in<sp/>seconds)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="26"><highlight class="normal">PARAM_CHARGING_TIME<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;test/charging_time&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28"><highlight class="normal"></highlight><highlight class="comment">#<sp/>Topic<sp/>in<sp/>which<sp/>are<sp/>sent<sp/>the<sp/>room<sp/>informations</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="29"><highlight class="normal">TOPIC_CONNECTIONS<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;/map/rooms&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight><highlight class="comment">#---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"></highlight><highlight class="comment">#<sp/>ONTOLOGY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight><highlight class="comment">#<sp/>---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="34"><highlight class="normal">ONTOLOGY_FILENAME<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;topological_map.owl&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="35"><highlight class="normal">ONTOLOGY_IRI<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;http://bnc/exp-rob-lab/2022-23&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="36"><highlight class="normal">ROBOT_NAME<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;AlphaBot&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="37"><highlight class="normal">STARTING_LOCATION<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;E&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="38"><highlight class="normal">CHARGING_LOCATION<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;E&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="39"><highlight class="normal">URGENCY_THRESHOLD<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;180&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41"><highlight class="normal"></highlight><highlight class="comment">#---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight><highlight class="comment">#<sp/>NODES<sp/>NAMES</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="43"><highlight class="normal"></highlight><highlight class="comment">#<sp/>---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight><highlight class="comment">#<sp/>Node<sp/>representing<sp/>the<sp/>shared<sp/>knowledge<sp/>required<sp/>for<sp/>this<sp/>scenario.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="45"><highlight class="normal">NODE_ROBOT_STATE<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;robot_state&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight><highlight class="comment">#<sp/>Node<sp/>implementing<sp/>the<sp/>Finite<sp/>State<sp/>Machine<sp/>of<sp/>the<sp/>robot</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="47"><highlight class="normal">NODE_SMACH_ROBOT<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;smach_robot&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="48"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight><highlight class="comment">#<sp/>---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="51"><highlight class="normal"></highlight><highlight class="comment">#<sp/><sp/>BATTERY</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"></highlight><highlight class="comment">#<sp/>---------------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight><highlight class="comment">#<sp/>The<sp/>name<sp/>of<sp/>the<sp/>topic<sp/>where<sp/>the<sp/>battery<sp/>state<sp/>is<sp/>published.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal">TOPIC_BATTERY_LOW<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;state/battery_level&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="comment">#<sp/>The<sp/>name<sp/>of<sp/>the<sp/>service<sp/>to<sp/>recharge<sp/>the<sp/>battery</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal">SERVER_CHARGE<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;state/charge_battery&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="comment">#<sp/>The<sp/>delay<sp/>between<sp/>changes<sp/>of<sp/>battery<sp/>levels,<sp/>i.e.,<sp/>high/low.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="comment">#<sp/>It<sp/>should<sp/>be<sp/>a<sp/>list<sp/>`[min_time,<sp/>max_time]`,<sp/>and<sp/>the<sp/>battery<sp/>level<sp/>change</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight><highlight class="comment">#<sp/>will<sp/>occur<sp/>after<sp/>a<sp/>random<sp/>number<sp/>of<sp/>seconds<sp/>within<sp/>such<sp/>an<sp/>interval.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal">PARAM_BATTERY_TIME<sp/>=<sp/></highlight><highlight class="stringliteral">&apos;test/battery_time&apos;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="comment">#<sp/>-------------------------------------------------</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight><highlight class="keyword">def<sp/></highlight><highlight class="normal"><ref refid="namespacearchitecture__name__mapper_1a89a559d690ed18a6f5148838a56816e4" kindref="member">tag_log</ref>(msg,<sp/>producer_tag):</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="stringliteral">&quot;&quot;&quot;Function<sp/>used<sp/>to<sp/>label<sp/>each<sp/>log<sp/>with<sp/>a<sp/>producer<sp/>tag.</highlight></codeline>
+<codeline lineno="68"><highlight class="stringliteral"><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="69"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Args:</highlight></codeline>
+<codeline lineno="70"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>msg<sp/>(str):<sp/>message<sp/>to<sp/>print</highlight></codeline>
+<codeline lineno="71"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>producer_tag<sp/>(str):<sp/>name<sp/>of<sp/>the<sp/>node<sp/>producer</highlight></codeline>
+<codeline lineno="72"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Returns:</highlight></codeline>
+<codeline lineno="73"><highlight class="stringliteral"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>string<sp/>(str):<sp/>msg<sp/>tagged<sp/>by<sp/>producer</highlight></codeline>
+<codeline lineno="74"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>&quot;&quot;&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&apos;@%s&gt;&gt;<sp/>%s&apos;</highlight><highlight class="normal"><sp/>%<sp/>(producer_tag,<sp/>msg)</highlight></codeline>
+    </programlisting>
+    <location file="utilities/surveillance_robot2/architecture_name_mapper.py"/>
+  </compounddef>
+</doxygen>

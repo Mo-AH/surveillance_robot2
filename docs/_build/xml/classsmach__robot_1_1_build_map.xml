@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classsmach__robot_1_1_build_map" kind="class" language="Python" prot="public">
+    <compoundname>smach_robot::BuildMap</compoundname>
+    <basecompoundref prot="public" virt="non-virtual">State</basecompoundref>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classsmach__robot_1_1_build_map_1a7c28abee5ae0fcfcf60cb1b5bd15fd5d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>smach_robot.BuildMap::smach_helper</definition>
+        <argsstring></argsstring>
+        <name>smach_helper</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/smach_robot.py" line="29" column="1" bodyfile="scripts/smach_robot.py" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classsmach__robot_1_1_build_map_1a14d22772140389c3600d9ca21eff4b82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_robot.BuildMap.__init__</definition>
+        <argsstring>(self, smach_helper)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>smach_helper</type>
+          <defname>smach_helper</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/smach_robot.py" line="26" column="1" bodyfile="scripts/smach_robot.py" bodystart="26" bodyend="30"/>
+      </memberdef>
+      <memberdef kind="function" id="classsmach__robot_1_1_build_map_1a6668e229cea218ef3ea793d00b42d467" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def smach_robot.BuildMap.execute</definition>
+        <argsstring>(self, userdata)</argsstring>
+        <name>execute</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>userdata</type>
+          <defname>userdata</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Execute method of the state BUILD_MAP
+
+    Returns:
+string (str): transition to the next state.
+</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/smach_robot.py" line="31" column="1" bodyfile="scripts/smach_robot.py" bodystart="31" bodyend="48"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>This class defines the state BUILD_MAP of the state machine.
+</verbatim> </para>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>State</label>
+      </node>
+      <node id="1">
+        <label>smach_robot.BuildMap</label>
+        <link refid="classsmach__robot_1_1_build_map"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>State</label>
+      </node>
+      <node id="1">
+        <label>smach_robot.BuildMap</label>
+        <link refid="classsmach__robot_1_1_build_map"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="scripts/smach_robot.py" line="23" column="1" bodyfile="scripts/smach_robot.py" bodystart="23" bodyend="49"/>
+    <listofallmembers>
+      <member refid="classsmach__robot_1_1_build_map_1a14d22772140389c3600d9ca21eff4b82" prot="public" virt="non-virtual"><scope>smach_robot::BuildMap</scope><name>__init__</name></member>
+      <member refid="classsmach__robot_1_1_build_map_1a6668e229cea218ef3ea793d00b42d467" prot="public" virt="non-virtual"><scope>smach_robot::BuildMap</scope><name>execute</name></member>
+      <member refid="classsmach__robot_1_1_build_map_1a7c28abee5ae0fcfcf60cb1b5bd15fd5d" prot="public" virt="non-virtual"><scope>smach_robot::BuildMap</scope><name>smach_helper</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

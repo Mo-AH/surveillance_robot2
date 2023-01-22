@@ -1,0 +1,158 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="classarm__controller_1_1_arm_controller_action" kind="class" language="Python" prot="public">
+    <compoundname>arm_controller::ArmControllerAction</compoundname>
+      <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="classarm__controller_1_1_arm_controller_action_1acc22f4a62f51f72774fabca70953d04a" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>arm_controller.ArmControllerAction::arm_base_pub</definition>
+        <argsstring></argsstring>
+        <name>arm_base_pub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/arm_controller.py" line="34" column="1" bodyfile="scripts/arm_controller.py" bodystart="34" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classarm__controller_1_1_arm_controller_action_1a61ce6d755dceb53b54ec20e3e03eb457" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>arm_controller.ArmControllerAction::arm1_pub</definition>
+        <argsstring></argsstring>
+        <name>arm1_pub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/arm_controller.py" line="35" column="1" bodyfile="scripts/arm_controller.py" bodystart="35" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classarm__controller_1_1_arm_controller_action_1ad42cc43cffb508ab5958e46bd69090ad" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>arm_controller.ArmControllerAction::arm2_pub</definition>
+        <argsstring></argsstring>
+        <name>arm2_pub</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/arm_controller.py" line="36" column="1" bodyfile="scripts/arm_controller.py" bodystart="36" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classarm__controller_1_1_arm_controller_action_1a782ea8945d15d3bdf926bd322d92116d" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>arm_controller.ArmControllerAction::scan_poses</definition>
+        <argsstring></argsstring>
+        <name>scan_poses</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/arm_controller.py" line="39" column="1" bodyfile="scripts/arm_controller.py" bodystart="39" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classarm__controller_1_1_arm_controller_action_1a7be5a65536a6da2423f284637e43a584" prot="private" static="no" mutable="no">
+        <type></type>
+        <definition>arm_controller.ArmControllerAction::_as</definition>
+        <argsstring></argsstring>
+        <name>_as</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/arm_controller.py" line="43" column="1" bodyfile="scripts/arm_controller.py" bodystart="43" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classarm__controller_1_1_arm_controller_action_1a9af7cc1e6744de8932aa0b45582dde69" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def arm_controller.ArmControllerAction.__init__</definition>
+        <argsstring>(self)</argsstring>
+        <name>__init__</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/arm_controller.py" line="32" column="1" bodyfile="scripts/arm_controller.py" bodystart="32" bodyend="49"/>
+      </memberdef>
+      <memberdef kind="function" id="classarm__controller_1_1_arm_controller_action_1a2d475183343c49a07fc5644955e9c8fd" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def arm_controller.ArmControllerAction.execute_callback</definition>
+        <argsstring>(self, goal)</argsstring>
+        <name>execute_callback</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <param>
+          <type>goal</type>
+          <defname>goal</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>The callback invoked when a client set a goal to the `arm_controller` server.
+    This function requires a movement code which can be 0 for the reaching of
+    the home position and 1 for a round trajectory, to permit the arm to rotate
+    thus the camera checks the entire room. 
+    Args:
+goal(ArmControlGoal) : The action goal represented by a movement code.</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/arm_controller.py" line="50" column="1" bodyfile="scripts/arm_controller.py" bodystart="50" bodyend="119"/>
+      </memberdef>
+      <memberdef kind="function" id="classarm__controller_1_1_arm_controller_action_1a6bb3edd4c20d9ca0b2f211bd153ac040" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>def</type>
+        <definition>def arm_controller.ArmControllerAction.initialize_scan_poses</definition>
+        <argsstring>(self)</argsstring>
+        <name>initialize_scan_poses</name>
+        <param>
+          <type>self</type>
+          <defname>self</defname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para><verbatim>Method to initialize the poses for a full rotation trajectory,
+    which permits the scan of the entire room.</verbatim> </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/arm_controller.py" line="120" column="1" bodyfile="scripts/arm_controller.py" bodystart="120" bodyend="143"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>A class that provides an action server to control the arm movements.
+    This server can rotate the arm to check all the room or can go back to the home position.
+</verbatim> </para>
+    </detaileddescription>
+    <location file="scripts/arm_controller.py" line="28" column="1" bodyfile="scripts/arm_controller.py" bodystart="28" bodyend="144"/>
+    <listofallmembers>
+      <member refid="classarm__controller_1_1_arm_controller_action_1a9af7cc1e6744de8932aa0b45582dde69" prot="public" virt="non-virtual"><scope>arm_controller::ArmControllerAction</scope><name>__init__</name></member>
+      <member refid="classarm__controller_1_1_arm_controller_action_1a7be5a65536a6da2423f284637e43a584" prot="private" virt="non-virtual"><scope>arm_controller::ArmControllerAction</scope><name>_as</name></member>
+      <member refid="classarm__controller_1_1_arm_controller_action_1a61ce6d755dceb53b54ec20e3e03eb457" prot="public" virt="non-virtual"><scope>arm_controller::ArmControllerAction</scope><name>arm1_pub</name></member>
+      <member refid="classarm__controller_1_1_arm_controller_action_1ad42cc43cffb508ab5958e46bd69090ad" prot="public" virt="non-virtual"><scope>arm_controller::ArmControllerAction</scope><name>arm2_pub</name></member>
+      <member refid="classarm__controller_1_1_arm_controller_action_1acc22f4a62f51f72774fabca70953d04a" prot="public" virt="non-virtual"><scope>arm_controller::ArmControllerAction</scope><name>arm_base_pub</name></member>
+      <member refid="classarm__controller_1_1_arm_controller_action_1a2d475183343c49a07fc5644955e9c8fd" prot="public" virt="non-virtual"><scope>arm_controller::ArmControllerAction</scope><name>execute_callback</name></member>
+      <member refid="classarm__controller_1_1_arm_controller_action_1a6bb3edd4c20d9ca0b2f211bd153ac040" prot="public" virt="non-virtual"><scope>arm_controller::ArmControllerAction</scope><name>initialize_scan_poses</name></member>
+      <member refid="classarm__controller_1_1_arm_controller_action_1a782ea8945d15d3bdf926bd322d92116d" prot="public" virt="non-virtual"><scope>arm_controller::ArmControllerAction</scope><name>scan_poses</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

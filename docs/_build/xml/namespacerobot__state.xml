@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.17">
+  <compounddef id="namespacerobot__state" kind="namespace" language="Python">
+    <compoundname>robot_state</compoundname>
+    <innerclass refid="classrobot__state_1_1_robot_state" prot="public">robot_state::RobotState</innerclass>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="namespacerobot__state_1aef2053a70f6aeb26884ba31b083afac0" prot="public" static="no" mutable="no">
+        <type></type>
+        <definition>robot_state.LOG_TAG</definition>
+        <argsstring></argsstring>
+        <name>LOG_TAG</name>
+        <initializer>=  anm.NODE_ROBOT_STATE</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="scripts/robot_state.py" line="32" column="1" bodyfile="scripts/robot_state.py" bodystart="32" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+<para><verbatim>.. module:: robot_state
+  :platform: Unix 
+  :synopsis: Python module for the robot-state node
+.. moduleauthor:: Mohammad Al Horany, 5271212@studenti.unige.it
+
+This module implements the node that manages the battery level.
+The battery level can be changed randomly by setting its time parameter or manually by the user.
+This dual-behaviour can be switched by changing the parameter `test/random_sense/active`.
+
+Publishes to:
+    - /state/battery_low
+
+Services:
+    - /state/charge_battery</verbatim> </para>
+    </detaileddescription>
+    <location file="scripts/robot_state.py" line="1" column="1"/>
+  </compounddef>
+</doxygen>

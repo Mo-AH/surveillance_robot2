@@ -27,8 +27,6 @@ The indoor environment is composed of locations and doors.
 
 For the environment representation, it has been used the [topological_map](https://github.com/buoncubi/topological_map) ontology, which was previously created with Protegé. In particular, the [file](https://github.com/Mo-AH/surveillance_robot2/tree/main/ontologies) used in this software is completely without the Abox.
 
----
-
 ## Assumptions and Behaviour ##
 
 The robot behaviour can be devided into two phases:
@@ -123,9 +121,9 @@ After having built the map in the `BUILD MAP` state, it passes to the loop of th
  - `REASONER` : queries the ontology about reachable and urgent locations to decide the next location. If the battery is low, the next location is always the charging one.
  - `MOVE`: it moves the robot to the target location. When it has reached the location, it uploads the ontology. 
   When the motion is finished (i.e. it reached the target location) by the `MOVE` node, there are 3 possible transitions:
-  - `location_urgent_reached`: the location should be checked and so it passes to the `CHECK_LOCATION` state.
-  - `location_not_urgent_reached`: the location shouldn't be checked so it passes to the `REASONER` state to decide next location.
-  - `charging_location_reached`: the robot has reached the charging location so it passes to the `CHARGE` state to recharge the battery.
+    1. `location_urgent_reached`: the location should be checked and so it passes to the `CHECK_LOCATION` state.
+    2. `location_not_urgent_reached`: the location shouldn't be checked so it passes to the `REASONER` state to decide next location.
+    3. `charging_location_reached`: the robot has reached the charging location so it passes to the `CHARGE` state to recharge the battery.
  - `CHECK_LOCATION`: it checks the room by doing a full rotation of the arm base.
  - `CHARGE`: it simply simulate the battery charging by wasting time. 
   
@@ -204,9 +202,9 @@ This software is developed with a [ROS Noetic](http://wiki.ros.org/noetic) envir
 
 ---
 
-## Simulation ##
+# Simulation #
 
-### How to Run ###
+## How to Run ##
 
 Once assured that all dependecies are installed, follow those steps:
   1. In the `src` folder of your ROS workspace, clone this repository by running `git clone https://github.com/Mo-AH/surveillance_robot2`
@@ -220,7 +218,7 @@ Once assured that all dependecies are installed, follow those steps:
 
 ---
 
-### Parameters ###
+## Parameters ##
 
 There are some parameters that are setted by default, but they can be changed to meet some specification:
 
@@ -239,18 +237,17 @@ Other parameters regarding the ontology, such as starting location, charging loc
 
 ---
 
-### Running code ###
+## Running code ##
 
-# VIDEO #
+[# VIDEO #](https://user-images.githubusercontent.com/91679281/213932898-782070d3-dc29-408f-b0a0-107b98f5afa3.mp4)
 
-
-In the video, there is the demonstration of the running code. It shows the initial phase in which the robot does a complete scan of the room, detecting markers, for building the map informations. After that, it starts moving following the surveillance policy. On the rviz window in the second part of the video, is shown the map building process of the SLAM Gmapping.
+In the video, there is the demonstration of the running code. It shows the initial phase in which the robot does a complete scan of the room, detecting markers, for building the map informations. After that, it starts moving following the surveillance policy. On the rviz window, is shown the map building process of the SLAM Gmapping and the MoveBase working to reach a goal.
 
 
 
 ---
 
-### Possible improvements ##
+## Possible improvements ##
 
 - Making the robot aware of the urgents rooms not adjacent
 - When the battery is low, it may be more appropriate pass directly to the move state with the charging location as target, instead of passing by the reasoner.
@@ -263,13 +260,9 @@ In the video, there is the demonstration of the running code. It shows the initi
 
 ---
 
-## Credits ##
+### Credits ###
 
-This package has been created starting from the [Surveillance Robot package](https://github.com/Mo-AH/surveillance_robot), that has been developed starting from the [arch_skeleton](https://github.com/buoncubi/arch_skeleton) repository, created by prof. Luca Buoncompagni. In particular, the python modules that has been used are:
-  - `robot_state`
-  - `action_client_helper`
-
----
+The package has been created starting from the [Surveillance Robot](https://github.com/Mo-AH/surveillance_robot) package, which in turn was derived from the [arch_skeleton](https://github.com/buoncubi/arch_skeleton) repository created by prof. Luca Buoncompagni. Specifically, the package utilizes the python modules `robot_state.py` and `action_client_helper.py`.
 
 ***Author***: Mohammad Al Horany
 

@@ -80,7 +80,7 @@ Note that, while performing `[1]` , it is always aware of the battery level. Mor
 ## Components diagram ##
 The connections among the nodes are described in the following image.
 
-![component_diagram](https://user-images.githubusercontent.com/91679281/203868060-07eac4a6-41d4-48bb-b6a8-51ac289e9a0c.png)
+![component_diagram](https://user-images.githubusercontent.com/91679281/213926931-18e18775-e4e4-4964-840d-c1d41c77f8f5.png)
 
 We can see how the `smach_robot`, which implements the behaviour of the robot using a state machine, is the central entity of the entire architecture and is better described after, in the states diagram.
 Taking apart the `ARMOR Server`, which is used by `smach_robot` to update and reason about the ontology, the other nodes simulate specific components of the robot:
@@ -97,7 +97,7 @@ Taking apart the `ARMOR Server`, which is used by `smach_robot` to update and re
 
 ## Sequence diagram ##
 
-![sequence_diagram](https://user-images.githubusercontent.com/91679281/203868067-1aaa2c30-93bb-4eab-866e-c3edf35ddefa.png)
+![sequence_diagram](https://user-images.githubusercontent.com/91679281/213926905-794d1266-1c1d-4766-98ed-dcc29116d9e5.png)
 
 This diagram represents the sequential flow of the architecture. 
 
@@ -115,7 +115,7 @@ Apart from `marker_detector`, which shutdown once finished the trasmission of ro
 ---
 
 ## States diagram ##
-![states_diagram drawio](https://user-images.githubusercontent.com/91679281/203871623-20364fd2-2646-4bc9-aca6-3f416d9bb0f7.png)
+![states_diagram drawio](https://user-images.githubusercontent.com/91679281/213926872-ca0e2ce9-e40f-4638-b895-a699765aa7ea.png)
 
 In this diagram is shown the robot behaviour, implemented through a state machine in the `smach_robot` node. The node relies on the use of `smach_helper` module, which decouples the state machine interface from the computations processes.
 
@@ -195,7 +195,11 @@ This software is developed with a [ROS Noetic](http://wiki.ros.org/noetic) envir
   - [armor_py_api](https://github.com/EmaroLab/armor_py_api), a library to simplify the python calls to the ARMOR Server, which can be installed by following the instructions in the README.
   - [xterm](https://wiki.archlinux.org/title/Xterm), a terminal simulator, which can be installed by running from the terminal `sudo apt install -y xterm`.
   - [smach](http://wiki.ros.org/smach), a state machine library to simulate the robot behaviour, which can be installed by running from the terminal `sudo apt-get install ros-noetic-smach-ros`
-  - []
+  - [rviz](http://wiki.ros.org/rviz), a robotic visualization tool.
+  - [gazebo](https://gazebosim.org/), a simulation environment.
+  - [OpenCV](http://wiki.ros.org/vision_opencv), a library to elaborate images.
+  - [move_base](http://wiki.ros.org/move_base), to control the robot motion.
+  - [gmapping](http://wiki.ros.org/gmapping), implements the SLAM algorithm to build the map based on the laser scan.
 
 
 ---

@@ -12,6 +12,7 @@ The full documentation can be found [here](https://Mo-AH.github.io/surveillance_
 
 # Scenario #
 
+
 ## Environment ##
 
 In this assignment, we have a `world` file with an indoor environment consisting of four rooms and three corridors, as illustrated in the accompanying figure. The robot begins in an additional room connected to corridor `E`, where it finds seven `ArucoMarkers` that contain information about the map. The assignment's environment has been slightly altered, with the boxes on which the markers are located being painted white. This change was made because the marker detection was not performing well due to low contrast when the boxes were black.
@@ -74,7 +75,7 @@ Note that, while performing `[1]` , it is always aware of the battery level. Mor
 
 ## Robot Model ##  
 
-![robot](https://user-images.githubusercontent.com/91679281/213946027-0c7322bd-0b66-4eb6-b8c9-a289ea58948e.png)
+![image](https://user-images.githubusercontent.com/91679281/213946785-63f2050f-9763-42da-8898-2ccdebaf1f15.png)
 
 The model used consist in a simple vehicle with a laser scan and an arm mounted on top, consisting in one rotating base plus two links connected through revolute joints. On the end-effector is mounted a camera which has the aim of detecting markers. 
 

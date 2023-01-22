@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>scripts.arm_controller &mdash; Surveillance Robot 2 1.0 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Surveillance Robot 2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Surveillance Robot 2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">scripts.arm_controller</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for scripts.arm_controller</h1><div class="highlight"><pre>
+<span></span><span class="ch">#! /usr/bin/env python</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: arm_controller </span>
+<span class="sd">  :platform: Unix </span>
+<span class="sd">  :synopsis: Python module for the arm controller implementation</span>
+<span class="sd">.. moduleauthor:: Mohammad Al Horany, 5271212@studenti.unige.it</span>
+
+<span class="sd">This module implements a node running an action server for controlling the arm.</span>
+<span class="sd">It provides two movements, the one to get back in home pose [0, 0, 0] and the one that</span>
+<span class="sd">do a full rotation both looking up and looking down, to permit a full check of the room.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">pi</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Float64</span>
+<span class="kn">from</span> <span class="nn">sensor_msgs.msg</span> <span class="kn">import</span> <span class="n">JointState</span>
+<span class="kn">from</span> <span class="nn">actionlib</span> <span class="kn">import</span> <span class="n">SimpleActionServer</span>
+<span class="kn">from</span> <span class="nn">surveillance_robot2.msg</span> <span class="kn">import</span> <span class="n">ArmControlGoal</span><span class="p">,</span> <span class="n">ArmControlFeedback</span><span class="p">,</span> <span class="n">ArmControlResult</span>
+<span class="kn">import</span> <span class="nn">surveillance_robot2</span>  <span class="c1"># This is required to pass the `ArmControlAction` type for instantiating the `SimpleActionServer`.</span>
+
+<span class="c1"># Arm Movements constant</span>
+<span class="n">BACK_TO_HOME_POSE</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">COMPLETE_SCAN</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">SIMPLE_ROTATION</span> <span class="o">=</span> <span class="mi">2</span>
+
+<div class="viewcode-block" id="ArmControllerAction"><a class="viewcode-back" href="../../index.html#scripts.arm_controller.ArmControllerAction">[docs]</a><span class="k">class</span> <span class="nc">ArmControllerAction</span><span class="p">():</span>
+<span class="w">	</span><span class="sd">&quot;&quot;&quot;A class that provides an action server to control the arm movements.</span>
+<span class="sd">		This server can rotate the arm to check all the room or can go back to the home position.</span>
+<span class="sd">	&quot;&quot;&quot;</span>
+	<span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+		<span class="c1"># Publishers to control joints position</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">arm_base_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;/robot/joint1_position_controller/command&quot;</span><span class="p">,</span> <span class="n">Float64</span><span class="p">,</span> <span class="n">queue_size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">arm1_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;/robot/joint2_position_controller/command&quot;</span><span class="p">,</span> <span class="n">Float64</span><span class="p">,</span> <span class="n">queue_size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">arm2_pub</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Publisher</span><span class="p">(</span><span class="s2">&quot;/robot/joint3_position_controller/command&quot;</span><span class="p">,</span> <span class="n">Float64</span><span class="p">,</span> <span class="n">queue_size</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+
+		<span class="c1"># Initialize the trajectory&#39;s poses for rotation</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">scan_poses</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">43</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">initialize_scan_poses</span><span class="p">()</span>
+
+		<span class="c1"># Instantiate and start the action server based on the `SimpleActionServer` class.</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_as</span> <span class="o">=</span> <span class="n">SimpleActionServer</span><span class="p">(</span><span class="s2">&quot;/control_arm&quot;</span><span class="p">,</span>
+										<span class="n">surveillance_robot2</span><span class="o">.</span><span class="n">msg</span><span class="o">.</span><span class="n">ArmControlAction</span><span class="p">,</span>
+									  <span class="n">execute_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">execute_callback</span><span class="p">,</span>
+									  <span class="n">auto_start</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_as</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="ArmControllerAction.execute_callback"><a class="viewcode-back" href="../../index.html#scripts.arm_controller.ArmControllerAction.execute_callback">[docs]</a>	<span class="k">def</span> <span class="nf">execute_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;  The callback invoked when a client set a goal to the `arm_controller` server.</span>
+<span class="sd">			This function requires a movement code which can be 0 for the reaching of</span>
+<span class="sd">			the home position and 1 for a round trajectory, to permit the arm to rotate</span>
+<span class="sd">			thus the camera checks the entire room. </span>
+<span class="sd">			Args:</span>
+<span class="sd">				goal(ArmControlGoal) : The action goal represented by a movement code.</span>
+<span class="sd">		</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="c1"># Check if the provided goal is processable. If not, this service will be aborted.</span>
+		<span class="k">if</span> <span class="n">goal</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="n">goal</span><span class="o">.</span><span class="n">movement_cmd</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">goal</span><span class="o">.</span><span class="n">movement_cmd</span> <span class="o">!=</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">goal</span><span class="o">.</span><span class="n">movement_cmd</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">):</span>
+			<span class="n">rospy</span><span class="o">.</span><span class="n">logerr</span><span class="p">(</span><span class="s1">&#39;[@arm_controller] : No valid movement code provided!&#39;</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_as</span><span class="o">.</span><span class="n">set_aborted</span><span class="p">()</span>
+			<span class="k">return</span>
+
+		<span class="n">trajectory_poses</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]]</span>
+
+		<span class="k">if</span> <span class="n">goal</span><span class="o">.</span><span class="n">movement_cmd</span> <span class="o">==</span> <span class="n">COMPLETE_SCAN</span><span class="p">:</span>
+			<span class="n">trajectory_poses</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scan_poses</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[@arm_controller] : The camera arm will start rotate to perform a complete scan of the room!&#39;</span><span class="p">)</span>
+		
+		<span class="k">elif</span> <span class="n">goal</span><span class="o">.</span><span class="n">movement_cmd</span> <span class="o">==</span> <span class="n">SIMPLE_ROTATION</span><span class="p">:</span>
+			<span class="n">trajectory_poses</span> <span class="o">=</span> <span class="p">[[</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">8</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">)]</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[@arm_controller] : The camera arm will start rotate to perform a quick check of the room!&#39;</span><span class="p">)</span>
+
+		<span class="k">elif</span> <span class="n">goal</span><span class="o">.</span><span class="n">movement_cmd</span> <span class="o">==</span> <span class="n">BACK_TO_HOME_POSE</span><span class="p">:</span>
+			<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[@arm_controller] : The camera arm will go back to the home pose!&#39;</span><span class="p">)</span>
+
+		<span class="c1"># Construct the feedback and loop for each trajectory&#39;s pose</span>
+		<span class="n">feedback</span> <span class="o">=</span> <span class="n">ArmControlFeedback</span><span class="p">()</span>
+		<span class="n">joint1_cmd</span> <span class="o">=</span> <span class="n">Float64</span><span class="p">()</span>
+		<span class="n">joint2_cmd</span> <span class="o">=</span> <span class="n">Float64</span><span class="p">()</span>
+		<span class="n">joint3_cmd</span> <span class="o">=</span> <span class="n">Float64</span><span class="p">()</span>
+		<span class="n">rate</span> <span class="o">=</span> <span class="n">rospy</span><span class="o">.</span><span class="n">Rate</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+		<span class="c1"># Perform the trajectory</span>
+		<span class="k">for</span> <span class="n">pose</span> <span class="ow">in</span> <span class="n">trajectory_poses</span><span class="p">:</span>
+
+			<span class="c1"># Check that the client did not cancel this service.</span>
+			<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_as</span><span class="o">.</span><span class="n">is_preempt_requested</span><span class="p">():</span>
+				<span class="n">rospy</span><span class="o">.</span><span class="n">loginfo</span><span class="p">(</span><span class="s1">&#39;[@arm_controller]: Service has been cancelled by the client!&#39;</span><span class="p">)</span>
+				<span class="c1"># Actually cancel this service.</span>
+				<span class="bp">self</span><span class="o">.</span><span class="n">_as</span><span class="o">.</span><span class="n">set_preempted</span><span class="p">()</span>
+				<span class="k">return</span>
+
+			<span class="c1"># Publish the next pose goal</span>
+			<span class="n">joint1_cmd</span> <span class="o">=</span> <span class="n">pose</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+			<span class="n">joint2_cmd</span> <span class="o">=</span> <span class="n">pose</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+			<span class="n">joint3_cmd</span> <span class="o">=</span> <span class="n">pose</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">arm_base_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">joint1_cmd</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">arm1_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">joint2_cmd</span><span class="p">)</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">arm2_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">joint3_cmd</span><span class="p">)</span>
+
+			<span class="c1"># Wait before going to the following pose</span>
+			<span class="n">rate</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
+
+			<span class="c1"># Publish a feedback to the client with the current pose </span>
+			<span class="n">feedback</span><span class="o">.</span><span class="n">current_pose</span> <span class="o">=</span> <span class="n">pose</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">_as</span><span class="o">.</span><span class="n">publish_feedback</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
+
+
+		<span class="c1"># Publish the results to the client and set the action as succeded</span>
+		<span class="n">result</span> <span class="o">=</span> <span class="n">ArmControlResult</span><span class="p">()</span>
+		<span class="n">result</span><span class="o">.</span><span class="n">final_pose</span> <span class="o">=</span> <span class="n">pose</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">_as</span><span class="o">.</span><span class="n">set_succeeded</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+		<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;[@arm_controller] : The camera arm has terminated the movement!&#39;</span><span class="p">)</span>
+		<span class="k">return</span>  </div>
+
+
+<div class="viewcode-block" id="ArmControllerAction.initialize_scan_poses"><a class="viewcode-back" href="../../index.html#scripts.arm_controller.ArmControllerAction.initialize_scan_poses">[docs]</a>	<span class="k">def</span> <span class="nf">initialize_scan_poses</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">		</span><span class="sd">&quot;&quot;&quot;  Method to initialize the poses for a full rotation trajectory,</span>
+<span class="sd">			which permits the scan of the entire room.</span>
+<span class="sd">		</span>
+<span class="sd">		&quot;&quot;&quot;</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">scan_poses</span><span class="p">[</span><span class="mi">0</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">]</span>
+
+		<span class="c1"># ROUND-UP</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">scan_poses</span><span class="p">[</span><span class="n">i</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">19</span><span class="p">),</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2</span><span class="p">]</span>
+
+		<span class="bp">self</span><span class="o">.</span><span class="n">scan_poses</span><span class="p">[</span><span class="mi">20</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">scan_poses</span><span class="p">[</span><span class="mi">21</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
+
+		<span class="c1"># ROUND-DOWN</span>
+		<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>
+			<span class="bp">self</span><span class="o">.</span><span class="n">scan_poses</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">21</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">pi</span><span class="o">/</span><span class="mi">19</span><span class="p">),</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">scan_poses</span><span class="p">[</span><span class="mi">41</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
+
+		<span class="c1"># FRONT VIEW (HOME POSE)</span>
+		<span class="bp">self</span><span class="o">.</span><span class="n">scan_poses</span><span class="p">[</span><span class="mi">42</span><span class="p">,:]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span></div></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+
+	<span class="c1"># Initialise the node, its action server, and wait. </span>
+	<span class="n">rospy</span><span class="o">.</span><span class="n">init_node</span><span class="p">(</span><span class="s2">&quot;arm_controller&quot;</span><span class="p">,</span> <span class="n">log_level</span><span class="o">=</span><span class="n">rospy</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+	<span class="n">ArmControllerAction</span><span class="p">()</span>
+	<span class="n">rospy</span><span class="o">.</span><span class="n">spin</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Mohammad Al Horany.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

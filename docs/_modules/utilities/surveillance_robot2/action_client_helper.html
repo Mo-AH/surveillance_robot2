@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>utilities.surveillance_robot2.action_client_helper &mdash; Surveillance Robot 2 1.0 documentation</title>
+      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../../_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/sphinx_highlight.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../../index.html" class="icon icon-home"> Surveillance Robot 2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"></div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Surveillance Robot 2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">utilities.surveillance_robot2.action_client_helper</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for utilities.surveillance_robot2.action_client_helper</h1><div class="highlight"><pre>
+<span></span><span class="ch">#!/usr/bin/env python</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">.. module:: action_client_helper </span>
+<span class="sd">  :platform: Unix </span>
+<span class="sd">  :synopsis: Python module for a simple action client helper</span>
+<span class="sd">.. moduleauthor:: Mohammad Al Horany, 5271212@studenti.unige.it</span>
+
+<span class="sd">This module implements a class that simplifies the implementation of a client for ROS action servers.</span>
+<span class="sd">It is used by the class :mod:`smach_helper`</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Import ROS libraries.</span>
+<span class="kn">import</span> <span class="nn">rospy</span>
+<span class="kn">from</span> <span class="nn">actionlib</span> <span class="kn">import</span> <span class="n">SimpleActionClient</span>
+
+<span class="c1"># Import mutex to manage synchronization among ROS-based threads (i.e., node loop and subscribers)</span>
+<span class="kn">from</span> <span class="nn">threading</span> <span class="kn">import</span> <span class="n">Lock</span>
+
+<span class="c1"># Import constant names that define the architecture&#39;s structure.</span>
+<span class="kn">from</span> <span class="nn">surveillance_robot2</span> <span class="kn">import</span> <span class="n">architecture_name_mapper</span> <span class="k">as</span> <span class="n">anm</span>
+
+<span class="c1"># Import ROS-based messages.</span>
+<span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">Bool</span>
+
+<span class="c1"># Constants</span>
+<span class="n">LOG_TAG</span> <span class="o">=</span> <span class="s1">&#39;action-client-helper&#39;</span>
+
+
+<div class="viewcode-block" id="ActionClientHelper"><a class="viewcode-back" href="../../../index.html#utilities.surveillance_robot2.action_client_helper.ActionClientHelper">[docs]</a><span class="k">class</span> <span class="nc">ActionClientHelper</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; A class to simplify the implementation of a client for ROS action servers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            service_name (str) : it is the name of the server that will be invoked by this client.</span>
+<span class="sd">            </span>
+<span class="sd">            action_type (msg): it is the message type that the server will exchange.</span>
+<span class="sd">            </span>
+<span class="sd">            done_callback (function) : it is the name of the function called when the action server completed its computation. If</span>
+<span class="sd">            this parameter is not set (i.e., set to `None`), then only the `self._done_callback` function will be</span>
+<span class="sd">            called when the server completes its computation.</span>
+<span class="sd">            </span>
+<span class="sd">            feedback_callback (function): it is the name of the function called when the action server sends a feedback message. If</span>
+<span class="sd">            this parameter is not set (i.e., set to `None`), then only the `self._feedback_callback` functions will be</span>
+<span class="sd">            called when the server sends a feedback message.</span>
+<span class="sd">            </span>
+<span class="sd">            mutex (Lock): it is a `Lock` object synchronised with the `done_callback` and `feedback_callback`. If it is not set</span>
+<span class="sd">            (i.e., set to `None`), then a new mutex instance is considered. Set this variable if you want to extends the</span>
+<span class="sd">            synchronization with other classes.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">service_name</span><span class="p">,</span> <span class="n">action_type</span><span class="p">,</span> <span class="n">done_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">feedback_callback</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">mutex</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        
+        <span class="c1"># Initialise the state of this client, i.e.,  `_is_running`, `_is_done`, and `_results`.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">reset_client_states</span><span class="p">()</span>
+        
+        <span class="c1"># Set the name of the server to be invoked.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_service_name</span> <span class="o">=</span> <span class="n">service_name</span>
+        
+        <span class="c1"># Get or create a new mutex.</span>
+        <span class="k">if</span> <span class="n">mutex</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mutex</span> <span class="o">=</span> <span class="n">Lock</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mutex</span> <span class="o">=</span> <span class="n">mutex</span>
+        
+        <span class="c1"># Instantiate a simple ROS-based action client.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">SimpleActionClient</span><span class="p">(</span><span class="n">service_name</span><span class="p">,</span> <span class="n">action_type</span><span class="p">)</span>
+
+        <span class="c1"># Set the done and feedback callbacks defined by the class using this client.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_external_done_cb</span> <span class="o">=</span> <span class="n">done_callback</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_external_feedback_cb</span> <span class="o">=</span> <span class="n">feedback_callback</span>
+        
+        <span class="c1"># Wait for the action server to be alive.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">wait_for_server</span><span class="p">()</span>
+
+<div class="viewcode-block" id="ActionClientHelper.send_goal"><a class="viewcode-back" href="../../../index.html#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.send_goal">[docs]</a>    <span class="k">def</span> <span class="nf">send_goal</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Start the action server with a new `goal`.</span>
+<span class="sd">            Note this call is not blocking (i.e., asynchronous performed).</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                goal (ActionGoal): the goal message of the action</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># A new goal can be given to the action server only if it is not running. This simplification implies that</span>
+        <span class="c1"># within the ROS architecture no more than one client can use the same server at the same time.</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span><span class="p">:</span>
+            <span class="c1"># Start the action server.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">send_goal</span><span class="p">(</span><span class="n">goal</span><span class="p">,</span>
+                                   <span class="n">done_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_done_callback</span><span class="p">,</span>
+                                   <span class="n">feedback_cb</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_feedback_callback</span><span class="p">)</span>
+            <span class="c1"># Set the client&#39;s states.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_done</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_results</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">warn_msg</span> <span class="o">=</span> <span class="s1">&#39;Warning send a new goal, cancel the current request first!&#39;</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="n">anm</span><span class="o">.</span><span class="n">tag_log</span><span class="p">(</span><span class="n">warn_msg</span><span class="p">,</span> <span class="n">LOG_TAG</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ActionClientHelper.cancel_goals"><a class="viewcode-back" href="../../../index.html#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.cancel_goals">[docs]</a>    <span class="k">def</span> <span class="nf">cancel_goals</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Stop the computation of the action server.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="c1"># The computation can be stopped only if the server is actually computing.</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span><span class="p">:</span>
+            <span class="c1"># Stop the computation.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">cancel_all_goals</span><span class="p">()</span>
+            <span class="c1"># Reset the client&#39;s state.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">reset_client_states</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">warn_msg</span> <span class="o">=</span> <span class="s1">&#39;Warning cannot cancel a not running service!&#39;</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logwarn</span><span class="p">(</span><span class="n">anm</span><span class="o">.</span><span class="n">tag_log</span><span class="p">(</span><span class="n">warn_msg</span><span class="p">,</span> <span class="n">LOG_TAG</span><span class="p">))</span></div>
+
+<div class="viewcode-block" id="ActionClientHelper.reset_client_states"><a class="viewcode-back" href="../../../index.html#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.reset_client_states">[docs]</a>    <span class="k">def</span> <span class="nf">reset_client_states</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Reset the client state variables stored in this class.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_done</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_results</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+    <span class="k">def</span> <span class="nf">_feedback_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called when the action server send some `feedback` back to the client.</span>
+<span class="sd">            </span>
+<span class="sd">            Args:</span>
+<span class="sd">                feedback (ActionFeedback): the feedback of the action</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+
+        <span class="c1"># Acquire the mutex to synchronise the computation concerning the `feedback` message with the other nodes of the architecture.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Eventually, call the method provided by the node that uses this action client to manage a feedback.</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_external_feedback_cb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_external_feedback_cb</span><span class="p">(</span><span class="n">feedback</span><span class="p">)</span>
+            <span class="c1"># Uncomment below to log information.</span>
+            <span class="c1"># rospy.loginfo(anm.tag_log(f&#39;`{self._service_name}` action server provide feedback: {feedback}.&#39;, LOG_TAG))</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="c1"># Realise the mutex to (eventually) unblock ROS-based thread waiting on the same mutex.</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+
+    <span class="k">def</span> <span class="nf">_done_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;This function is called when the action server finish its computation, i.e., it provides a `done` message.</span>
+<span class="sd">            </span>
+<span class="sd">            Args:</span>
+<span class="sd">                status (ActionStatus): the state of the action</span>
+<span class="sd">                results (ActionResult): the result of the action</span>
+<span class="sd">        </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Acquire the mutex to synchronise the computation concerning the `done` message with the other nodes of the architecture.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_mutex</span><span class="o">.</span><span class="n">acquire</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># Set the client&#39;s state</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span> <span class="o">=</span> <span class="kc">False</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_is_done</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_results</span> <span class="o">=</span> <span class="n">results</span>
+
+            <span class="c1"># Eventually, call the method provided by the node that uses this action client to manage a result.</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_external_done_cb</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_external_done_cb</span><span class="p">(</span><span class="n">status</span><span class="p">,</span> <span class="n">results</span><span class="p">)</span>
+
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_mutex</span><span class="o">.</span><span class="n">release</span><span class="p">()</span>
+
+
+<div class="viewcode-block" id="ActionClientHelper.is_done"><a class="viewcode-back" href="../../../index.html#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.is_done">[docs]</a>    <span class="k">def</span> <span class="nf">is_done</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>  <span class="c1"># they should be mutex safe</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Method to check if the action is done.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                bool (Bool): `True` if the action server finished is computation, or `False` otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_done</span></div>
+
+
+<div class="viewcode-block" id="ActionClientHelper.is_running"><a class="viewcode-back" href="../../../index.html#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.is_running">[docs]</a>    <span class="k">def</span> <span class="nf">is_running</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Method to check if the action server is running.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                bool (Bool): `True` if the action server is running, or `False` otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_running</span></div>
+
+ 
+<div class="viewcode-block" id="ActionClientHelper.get_results"><a class="viewcode-back" href="../../../index.html#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.get_results">[docs]</a>    <span class="k">def</span> <span class="nf">get_results</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Method to get the results of the action.</span>
+
+<span class="sd">            Returns:</span>
+<span class="sd">                result (ActionResult): results of the action server, if any, or `None`.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_done</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_results</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">log_err</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Error: cannot get result for `</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_service_name</span><span class="si">}</span><span class="s1">`.&#39;</span>
+            <span class="n">rospy</span><span class="o">.</span><span class="n">logerr</span><span class="p">(</span><span class="n">anm</span><span class="o">.</span><span class="n">tag_log</span><span class="p">(</span><span class="n">log_err</span><span class="p">,</span> <span class="n">LOG_TAG</span><span class="p">))</span>
+            <span class="k">return</span> <span class="kc">None</span></div></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Mohammad Al Horany.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

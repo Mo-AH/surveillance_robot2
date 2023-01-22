@@ -79,7 +79,7 @@ Note that, while performing `[1]` , it is always aware of the battery level. Mor
 
 The model used consist in a simple vehicle with a laser scan and an arm mounted on top, consisting in one rotating base plus two links connected through revolute joints. On the end-effector is mounted a camera which has the aim of detecting markers. 
 
-The arm is controlled through the `JointStateController` interface.
+The arm's movement is managed through the JointStateController interface and the PID values has been tuned manually.
 
 # Software Architecture #
 

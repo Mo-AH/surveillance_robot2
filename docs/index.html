@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to Surveillance Robot 2’s documentation! &mdash; Surveillance Robot 2 1.0 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> Surveillance Robot 2
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to Surveillance Robot 2’s documentation!</a></li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+<li><a class="reference internal" href="#module-scripts.smach_robot">State Machine</a><ul>
+<li><a class="reference internal" href="#scripts.smach_robot.BuildMap"><code class="docutils literal notranslate"><span class="pre">BuildMap</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.smach_robot.BuildMap.execute"><code class="docutils literal notranslate"><span class="pre">BuildMap.execute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts.smach_robot.Charge"><code class="docutils literal notranslate"><span class="pre">Charge</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.smach_robot.Charge.execute"><code class="docutils literal notranslate"><span class="pre">Charge.execute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts.smach_robot.CheckLocation"><code class="docutils literal notranslate"><span class="pre">CheckLocation</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.smach_robot.CheckLocation.execute"><code class="docutils literal notranslate"><span class="pre">CheckLocation.execute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts.smach_robot.Move"><code class="docutils literal notranslate"><span class="pre">Move</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.smach_robot.Move.execute"><code class="docutils literal notranslate"><span class="pre">Move.execute()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#scripts.smach_robot.Reasoner"><code class="docutils literal notranslate"><span class="pre">Reasoner</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.smach_robot.Reasoner.execute"><code class="docutils literal notranslate"><span class="pre">Reasoner.execute()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-utilities.surveillance_robot2.smach_helper">State Machine Helper</a><ul>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper"><code class="docutils literal notranslate"><span class="pre">SmachHelper</span></code></a><ul>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.battery_callback"><code class="docutils literal notranslate"><span class="pre">SmachHelper.battery_callback()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.build_map"><code class="docutils literal notranslate"><span class="pre">SmachHelper.build_map()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.check_location"><code class="docutils literal notranslate"><span class="pre">SmachHelper.check_location()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.decide_next_location"><code class="docutils literal notranslate"><span class="pre">SmachHelper.decide_next_location()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.format_query"><code class="docutils literal notranslate"><span class="pre">SmachHelper.format_query()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.get_most_urgent"><code class="docutils literal notranslate"><span class="pre">SmachHelper.get_most_urgent()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.map_callback"><code class="docutils literal notranslate"><span class="pre">SmachHelper.map_callback()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.move_robot"><code class="docutils literal notranslate"><span class="pre">SmachHelper.move_robot()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.recharge"><code class="docutils literal notranslate"><span class="pre">SmachHelper.recharge()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.update_ontology"><code class="docutils literal notranslate"><span class="pre">SmachHelper.update_ontology()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.arm_controller">Arm Controller</a><ul>
+<li><a class="reference internal" href="#scripts.arm_controller.ArmControllerAction"><code class="docutils literal notranslate"><span class="pre">ArmControllerAction</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.arm_controller.ArmControllerAction.execute_callback"><code class="docutils literal notranslate"><span class="pre">ArmControllerAction.execute_callback()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.arm_controller.ArmControllerAction.initialize_scan_poses"><code class="docutils literal notranslate"><span class="pre">ArmControllerAction.initialize_scan_poses()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-scripts.robot_state">Robot State</a><ul>
+<li><a class="reference internal" href="#scripts.robot_state.RobotState"><code class="docutils literal notranslate"><span class="pre">RobotState</span></code></a><ul>
+<li><a class="reference internal" href="#scripts.robot_state.RobotState.battery_publisher"><code class="docutils literal notranslate"><span class="pre">RobotState.battery_publisher()</span></code></a></li>
+<li><a class="reference internal" href="#scripts.robot_state.RobotState.recharge"><code class="docutils literal notranslate"><span class="pre">RobotState.recharge()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#marker-detector">Marker Detector</a></li>
+<li><a class="reference internal" href="#marker-server">Marker Server</a></li>
+<li><a class="reference internal" href="#module-utilities.surveillance_robot2.architecture_name_mapper">Architecture Name Mapper</a><ul>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.architecture_name_mapper.tag_log"><code class="docutils literal notranslate"><span class="pre">tag_log()</span></code></a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#module-utilities.surveillance_robot2.action_client_helper">Action Client Helper</a><ul>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper"><code class="docutils literal notranslate"><span class="pre">ActionClientHelper</span></code></a><ul>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.cancel_goals"><code class="docutils literal notranslate"><span class="pre">ActionClientHelper.cancel_goals()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.get_results"><code class="docutils literal notranslate"><span class="pre">ActionClientHelper.get_results()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.is_done"><code class="docutils literal notranslate"><span class="pre">ActionClientHelper.is_done()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.is_running"><code class="docutils literal notranslate"><span class="pre">ActionClientHelper.is_running()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.reset_client_states"><code class="docutils literal notranslate"><span class="pre">ActionClientHelper.reset_client_states()</span></code></a></li>
+<li><a class="reference internal" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.send_goal"><code class="docutils literal notranslate"><span class="pre">ActionClientHelper.send_goal()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Surveillance Robot 2</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a></li>
+      <li class="breadcrumb-item active">Welcome to Surveillance Robot 2’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcome-to-surveillance-robot-2-s-documentation">
+<h1>Welcome to Surveillance Robot 2’s documentation!<a class="headerlink" href="#welcome-to-surveillance-robot-2-s-documentation" title="Permalink to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+<section id="module-scripts.smach_robot">
+<span id="state-machine"></span><h1>State Machine<a class="headerlink" href="#module-scripts.smach_robot" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-smach_robot"></span><p>This module implements a node running the state machine of the robot.
+It manages the transitions between states, leaving the computation processes to the helper
+class of the smach given by the module <code class="xref py py-mod docutils literal notranslate"><span class="pre">state_machine_helper</span></code>.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.smach_robot.BuildMap">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.smach_robot.</span></span><span class="sig-name descname"><span class="pre">BuildMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smach_helper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#BuildMap"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.BuildMap" title="Permalink to this definition"></a></dt>
+<dd><p>This class defines the state BUILD_MAP of the state machine.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.smach_robot.BuildMap.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#BuildMap.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.BuildMap.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute method of the state BUILD_MAP</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transition to the next state.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.smach_robot.Charge">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.smach_robot.</span></span><span class="sig-name descname"><span class="pre">Charge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smach_helper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#Charge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.Charge" title="Permalink to this definition"></a></dt>
+<dd><p>This class defines the state CHARGE of the state machine.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.smach_robot.Charge.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#Charge.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.Charge.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute method of the state CHARGE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transition to the next state.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.smach_robot.CheckLocation">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.smach_robot.</span></span><span class="sig-name descname"><span class="pre">CheckLocation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smach_helper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#CheckLocation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.CheckLocation" title="Permalink to this definition"></a></dt>
+<dd><p>This class defines the state CHECK_LOCATION of the state machine.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.smach_robot.CheckLocation.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#CheckLocation.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.CheckLocation.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute method of the state CHECK_LOCATION.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transition to the next state.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.smach_robot.Move">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.smach_robot.</span></span><span class="sig-name descname"><span class="pre">Move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smach_helper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#Move"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.Move" title="Permalink to this definition"></a></dt>
+<dd><p>This class defines the state MOVE of the state machine.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.smach_robot.Move.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#Move.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.Move.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute method of the state Move.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transition to the next state.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.smach_robot.Reasoner">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.smach_robot.</span></span><span class="sig-name descname"><span class="pre">Reasoner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">smach_helper</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#Reasoner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.Reasoner" title="Permalink to this definition"></a></dt>
+<dd><p>This class defines the REASONER state</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.smach_robot.Reasoner.execute">
+<span class="sig-name descname"><span class="pre">execute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">userdata</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/smach_robot.html#Reasoner.execute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.smach_robot.Reasoner.execute" title="Permalink to this definition"></a></dt>
+<dd><p>Execute method of the REASONER state</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>transition to the next state.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>string (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-utilities.surveillance_robot2.smach_helper">
+<span id="state-machine-helper"></span><h1>State Machine Helper<a class="headerlink" href="#module-utilities.surveillance_robot2.smach_helper" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-smach_helper"></span><p>This module can be considered as the core of the state machine, by helping it to process its computation.
+It implements a specific method for every state plus some other useful method.
+It exchanges information with the ontology with the api provided by the <a class="reference external" href="https://github.com/EmaroLab/armor_py_api">*armor_api*</a> library.
+It builds the topological map, gets the battery state and controls the robot and arm movements
+Subscriber of:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>/state/get_battery</p></li>
+<li><p>/map/connections</p></li>
+</ul>
+</div></blockquote>
+<dl class="simple">
+<dt>Service client of:</dt><dd><ul class="simple">
+<li><p>/state/charge_battery</p></li>
+</ul>
+</dd>
+<dt>Action client of:</dt><dd><ul class="simple">
+<li><p>/move_base</p></li>
+<li><p>/control_arm</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utilities.surveillance_robot2.smach_helper.</span></span><span class="sig-name descname"><span class="pre">SmachHelper</span></span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper" title="Permalink to this definition"></a></dt>
+<dd><p>This class is the state machine helper. It loads the ontology, initializes
+useful variables and provides methods to help the state machine in controlling the robot,
+both in simulation and in the ontology.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.battery_callback">
+<span class="sig-name descname"><span class="pre">battery_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.battery_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.battery_callback" title="Permalink to this definition"></a></dt>
+<dd><p>The subscriber of the <cite>/state/battery_low/</cite> topic.
+It acquires the changes of states of the battery.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>msg (Bool) : represents the battery state</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.build_map">
+<span class="sig-name descname"><span class="pre">build_map</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.build_map"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.build_map" title="Permalink to this definition"></a></dt>
+<dd><p>Method paired with BUILD_MAP state.
+It assert the robot initial location, then waits for the map information making the camera-arm rotate.
+Once map has been built, it disjoints all the individuals, initializes the timer of locations and the urgency threshold.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.check_location">
+<span class="sig-name descname"><span class="pre">check_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">location</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.check_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.check_location" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Method paired with the CHECK_LOCATION state. It rotates the arm using the /control_arm action.</dt><dd><p>In the meanwhile, it gets the battery state and cancels the checking if battery got low.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>[</em><em>]</em>) – The location to check</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if it finishes correctly, False if battery got low</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a> (Bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.decide_next_location">
+<span class="sig-name descname"><span class="pre">decide_next_location</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.decide_next_location"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.decide_next_location" title="Permalink to this definition"></a></dt>
+<dd><p>Method paired with the REASONER state.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>It decides the next location by querying the ontology. The policy of the decision is the following:</dt><dd><ul class="simple">
+<li><p>If battery_low, next_location = charging location</p></li>
+<li><p>If urgent locations nearby, next_location = most urgent reachable location</p></li>
+<li><p>Else, next_location = random CORRIDOR among the reachable</p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>location to reach</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>next_location(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.format_query">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">format_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type_of_object</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.format_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.format_query" title="Permalink to this definition"></a></dt>
+<dd><p>Function to format a list of query strings, by extracting only the meaningful part.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>old_list</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>[</em><em>]</em>) – The list of queries to format.</p></li>
+<li><p><strong>type_of_object</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>[</em><em>]</em>) – The query type, that can be ‘LOCATION’ or ‘TIMESTAMP’</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The formatted list of queries.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>formatted_list (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>[])</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.get_most_urgent">
+<span class="sig-name descname"><span class="pre">get_most_urgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">reachable_locations</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.get_most_urgent"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.get_most_urgent" title="Permalink to this definition"></a></dt>
+<dd><p>This method is used by <cite>decide_next_location()</cite> and it returns the most urgent location among the ones given in input, if any, otherwhise it returns False.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>reachable_locations</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a><em>[</em><em>]</em>) – The list of reachable locations</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>The most urgent location among the reachable ones; if none of them are URGENT,</dt><dd><p>this is None.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>most_urgent_location(<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.map_callback">
+<span class="sig-name descname"><span class="pre">map_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.map_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.map_callback" title="Permalink to this definition"></a></dt>
+<dd><p>The subscriber callback of the <cite>/map/rooms’</cite> topic.
+It receives rooms information and store them.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>Args:</dt><dd><p>msg (Room) : msg containing informations about a room</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.move_robot">
+<span class="sig-name descname"><span class="pre">move_robot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">new_location</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.move_robot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.move_robot" title="Permalink to this definition"></a></dt>
+<dd><dl class="simple">
+<dt>Method paired with the Move state.</dt><dd><p>It sends a goal to /move_base and checks the battery in the meanwhile.
+Once arrived, it updates the robot location in the ontology (“isIn” object prop.) and the last time it moved (“now” data prop.)</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>new_location</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – The goal location</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>True if it finishes correctly, False if battery got low</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a>(Bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.recharge">
+<span class="sig-name descname"><span class="pre">recharge</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.recharge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.recharge" title="Permalink to this definition"></a></dt>
+<dd><p>Method used to send a request to the service that recharges the battery.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.smach_helper.SmachHelper.update_ontology">
+<span class="sig-name descname"><span class="pre">update_ontology</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/smach_helper.html#SmachHelper.update_ontology"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.smach_helper.SmachHelper.update_ontology" title="Permalink to this definition"></a></dt>
+<dd><p>Method to apply the changes in the buffer and to synchronyze the reasoner.
+It is not protected by mutex because it is called always by the manipulations methods
+that already have the mutex.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-scripts.arm_controller">
+<span id="arm-controller"></span><h1>Arm Controller<a class="headerlink" href="#module-scripts.arm_controller" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-arm_controller"></span><p>This module implements a node running an action server for controlling the arm.
+It provides two movements, the one to get back in home pose [0, 0, 0] and the one that
+do a full rotation both looking up and looking down, to permit a full check of the room.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.arm_controller.ArmControllerAction">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.arm_controller.</span></span><span class="sig-name descname"><span class="pre">ArmControllerAction</span></span><a class="reference internal" href="_modules/scripts/arm_controller.html#ArmControllerAction"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.arm_controller.ArmControllerAction" title="Permalink to this definition"></a></dt>
+<dd><p>A class that provides an action server to control the arm movements.
+This server can rotate the arm to check all the room or can go back to the home position.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.arm_controller.ArmControllerAction.execute_callback">
+<span class="sig-name descname"><span class="pre">execute_callback</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">goal</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/arm_controller.html#ArmControllerAction.execute_callback"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.arm_controller.ArmControllerAction.execute_callback" title="Permalink to this definition"></a></dt>
+<dd><p>The callback invoked when a client set a goal to the <cite>arm_controller</cite> server.
+This function requires a movement code which can be 0 for the reaching of
+the home position and 1 for a round trajectory, to permit the arm to rotate
+thus the camera checks the entire room.
+:param goal: The action goal represented by a movement code.
+:type goal: ArmControlGoal</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.arm_controller.ArmControllerAction.initialize_scan_poses">
+<span class="sig-name descname"><span class="pre">initialize_scan_poses</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/arm_controller.html#ArmControllerAction.initialize_scan_poses"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.arm_controller.ArmControllerAction.initialize_scan_poses" title="Permalink to this definition"></a></dt>
+<dd><p>Method to initialize the poses for a full rotation trajectory,
+which permits the scan of the entire room.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-scripts.robot_state">
+<span id="robot-state"></span><h1>Robot State<a class="headerlink" href="#module-scripts.robot_state" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-robot_state"></span><p>This module implements the node that manages the battery level.
+The battery level can be changed randomly by setting its time parameter or manually by the user.
+This dual-behaviour can be switched by changing the parameter <cite>test/random_sense/active</cite>.</p>
+<dl class="simple">
+<dt>Publishes to:</dt><dd><ul class="simple">
+<li><p>/state/battery_low</p></li>
+</ul>
+</dd>
+<dt>Services:</dt><dd><ul class="simple">
+<li><p>/state/charge_battery</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py class">
+<dt class="sig sig-object py" id="scripts.robot_state.RobotState">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scripts.robot_state.</span></span><span class="sig-name descname"><span class="pre">RobotState</span></span><a class="reference internal" href="_modules/scripts/robot_state.html#RobotState"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.robot_state.RobotState" title="Permalink to this definition"></a></dt>
+<dd><p>The robot state manager class.
+This class provides:
+- service to recharge the battery
+- publisher to notify that the battery is low.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.robot_state.RobotState.battery_publisher">
+<span class="sig-name descname"><span class="pre">battery_publisher</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/robot_state.html#RobotState.battery_publisher"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.robot_state.RobotState.battery_publisher" title="Permalink to this definition"></a></dt>
+<dd><p>Publish changes of battery levels.
+This method runs on a separate thread.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scripts.robot_state.RobotState.recharge">
+<span class="sig-name descname"><span class="pre">recharge</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scripts/robot_state.html#RobotState.recharge"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scripts.robot_state.RobotState.recharge" title="Permalink to this definition"></a></dt>
+<dd><p>The <cite>state/charge_battery</cite> service implementation.
+It waits the time specified in the parameter charging_time before returning the response.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>request</strong> (<em>SetBoolRequest</em>) – generic request</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>response that confirms the complete charging.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>response (SetBoolResponse)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="marker-detector">
+<h1>Marker Detector<a class="headerlink" href="#marker-detector" title="Permalink to this heading"></a></h1>
+<p>Ros node to detect markers from the camera image and to retrieve the rooms info. </p>
+<p>
+Subscribes to: <ul class="simple">
+<li><p>/robot/camera/image_raw</p></li>
+</ul>
+<dl class="simple">
+<dt><strong>Author</strong></dt><dd><p>Mohammad Al Horany </p>
+</dd>
+<dt><strong>Version</strong></dt><dd><p>1.0 </p>
+</dd>
+<dt><strong>Date</strong></dt><dd><p>21/01/23</p>
+</dd>
+</dl>
+</p>
+<p>Publishes to: <ul class="simple">
+<li><p>/map/rooms</p></li>
+</ul>
+</p>
+<p>Client of: <ul class="simple">
+<li><p>/room_info</p></li>
+</ul>
+</p>
+<p>Description : Node to detect markers in the camera image. It asks to the marker_server node the room’s informations embedded in the marker and send those informations to the smach_robot node. </p>
+<dl class="field-list simple">
+<dt class="field-odd">param total_markers</dt>
+<dd class="field-odd"><p><strong>[in]</strong> Total number of markers to be found</p>
+</dd>
+</dl>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv44mainiPPc">
+<span id="_CPPv34mainiPPc"></span><span id="_CPPv24mainiPPc"></span><span id="main__i.cPP"></span><span class="target" id="marker__detector_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv44mainiPPc" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Main function of the Aruco Marker Detector node. </p>
+<p>
+This function initializes the ROS node, creates an instance of the <a class="reference internal" href="#class_aruco_marker_detector"><span class="std std-ref">ArucoMarkerDetector</span></a> class, and spins. When all markers are found, this node will shutdown. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>argc</strong> – Number of command line arguments </p></li>
+<li><p><strong>argv</strong> – Command line arguments</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<dl class="cpp class">
+<dt class="sig sig-object cpp" id="_CPPv419ArucoMarkerDetector">
+<span id="_CPPv319ArucoMarkerDetector"></span><span id="_CPPv219ArucoMarkerDetector"></span><span id="ArucoMarkerDetector"></span><span class="target" id="class_aruco_marker_detector"></span><span class="k"><span class="pre">class</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArucoMarkerDetector</span></span></span><a class="headerlink" href="#_CPPv419ArucoMarkerDetector" title="Permalink to this definition"></a><br /></dt>
+<dd><p>A class for detecting markers in the camera images and for publishing informations about rooms. </p>
+<p>This class detects the Aruco markers in the camera image, asks for room informations embedded in them through the <code class="docutils literal notranslate"><span class="pre">/room_info</span></code> service (provided by <code class="docutils literal notranslate"><span class="pre">marker_server</span></code>) and publish those informations in the <code class="docutils literal notranslate"><span class="pre">map/rooms</span></code> topic, to which the <code class="docutils literal notranslate"><span class="pre">smach_robot</span></code> is subscribed. </p>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-public-functions">Public Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector19ArucoMarkerDetectorEv">
+<span id="_CPPv3N19ArucoMarkerDetector19ArucoMarkerDetectorEv"></span><span id="_CPPv2N19ArucoMarkerDetector19ArucoMarkerDetectorEv"></span><span id="ArucoMarkerDetector::ArucoMarkerDetector"></span><span class="target" id="class_aruco_marker_detector_1aee12849ab1970be736e68016754f0a96"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">ArucoMarkerDetector</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector19ArucoMarkerDetectorEv" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Constructor Initializes the objects, subscribes to the image topic and gets the total number of markers. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetectorD0Ev">
+<span id="_CPPv3N19ArucoMarkerDetectorD0Ev"></span><span id="_CPPv2N19ArucoMarkerDetectorD0Ev"></span><span id="ArucoMarkerDetector::~ArucoMarkerDetector"></span><span class="target" id="class_aruco_marker_detector_1aabb89f779b89cbf945ab0db2f10559a2"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">~ArucoMarkerDetector</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetectorD0Ev" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Destructor. </p>
+</dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector13imageCallbackERKN11sensor_msgs13ImageConstPtrE">
+<span id="_CPPv3N19ArucoMarkerDetector13imageCallbackERKN11sensor_msgs13ImageConstPtrE"></span><span id="_CPPv2N19ArucoMarkerDetector13imageCallbackERKN11sensor_msgs13ImageConstPtrE"></span><span id="ArucoMarkerDetector::imageCallback__sensor_msgs::ImageConstPtrCR"></span><span class="target" id="class_aruco_marker_detector_1a5dca165d1abc9153570405feef5c4835"></span><span class="k"><span class="pre">inline</span></span><span class="w"> </span><span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">imageCallback</span></span></span><span class="sig-paren">(</span><span class="k"><span class="pre">const</span></span><span class="w"> </span><span class="n"><span class="pre">sensor_msgs</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ImageConstPtr</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">msg</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector13imageCallbackERKN11sensor_msgs13ImageConstPtrE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Callback function for the <code class="docutils literal notranslate"><span class="pre">/robot/camera/image_raw</span></code> topic. </p>
+<p>
+This function detects markers in the received image, draws them on the image, retrieves room information embedded in the marker and send them to <code class="docutils literal notranslate"><span class="pre">/map/rooms</span></code> topic. When it found all the total number of markers, it shutdowns the node. </p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>msg</strong> – Image message</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-private-members">Private Members</p>
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector3nh_E">
+<span id="_CPPv3N19ArucoMarkerDetector3nh_E"></span><span id="_CPPv2N19ArucoMarkerDetector3nh_E"></span><span id="ArucoMarkerDetector::nh___ros::NodeHandle"></span><span class="target" id="class_aruco_marker_detector_1aa4afd26055cc663ce1c69cbc3d623a6d"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">NodeHandle</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">nh_</span></span></span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector3nh_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROS Node handler. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector3it_E">
+<span id="_CPPv3N19ArucoMarkerDetector3it_E"></span><span id="_CPPv2N19ArucoMarkerDetector3it_E"></span><span id="ArucoMarkerDetector::it___image_transport::ImageTransport"></span><span class="target" id="class_aruco_marker_detector_1a108d78444cfe633ff25dcc0544a198ac"></span><span class="n"><span class="pre">image_transport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ImageTransport</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">it_</span></span></span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector3it_E" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Image transport to receive the camera image. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector9image_subE">
+<span id="_CPPv3N19ArucoMarkerDetector9image_subE"></span><span id="_CPPv2N19ArucoMarkerDetector9image_subE"></span><span id="ArucoMarkerDetector::image_sub__image_transport::Subscriber"></span><span class="target" id="class_aruco_marker_detector_1a6e904da96c9074156d9a66d36e97e02f"></span><span class="n"><span class="pre">image_transport</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Subscriber</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">image_sub</span></span></span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector9image_subE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROS image subscriber. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector8detectorE">
+<span id="_CPPv3N19ArucoMarkerDetector8detectorE"></span><span id="_CPPv2N19ArucoMarkerDetector8detectorE"></span><span id="ArucoMarkerDetector::detector__aruco::MarkerDetector"></span><span class="target" id="class_aruco_marker_detector_1a2f4a722895064d8fd9cbc4b984b80f22"></span><span class="n"><span class="pre">aruco</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">MarkerDetector</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">detector</span></span></span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector8detectorE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Aruco library’s marker detector object. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector16markers_detectedE">
+<span id="_CPPv3N19ArucoMarkerDetector16markers_detectedE"></span><span id="_CPPv2N19ArucoMarkerDetector16markers_detectedE"></span><span id="ArucoMarkerDetector::markers_detected__std::map:i.b:"></span><span class="target" id="class_aruco_marker_detector_1a7eecd938f4499ab88feeba1f77cc0d38"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="kt"><span class="pre">bool</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">markers_detected</span></span></span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector16markers_detectedE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Map to store if a marker has been detected or not. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector11markers_idsE">
+<span id="_CPPv3N19ArucoMarkerDetector11markers_idsE"></span><span id="_CPPv2N19ArucoMarkerDetector11markers_idsE"></span><span id="ArucoMarkerDetector::markers_ids__std::vector:i:"></span><span class="target" id="class_aruco_marker_detector_1ab3d9529dcf294441459eb6d65b91b40d"></span><span class="n"><span class="pre">std</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">vector</span></span><span class="p"><span class="pre">&lt;</span></span><span class="kt"><span class="pre">int</span></span><span class="p"><span class="pre">&gt;</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">markers_ids</span></span></span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector11markers_idsE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Vector to store the ids of the detected markers. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector13total_markersE">
+<span id="_CPPv3N19ArucoMarkerDetector13total_markersE"></span><span id="_CPPv2N19ArucoMarkerDetector13total_markersE"></span><span id="ArucoMarkerDetector::total_markers__i"></span><span class="target" id="class_aruco_marker_detector_1af933305bc7624814b7a77d975eef2dea"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">total_markers</span></span></span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector13total_markersE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Total number of markers that should be detected. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector13room_info_pubE">
+<span id="_CPPv3N19ArucoMarkerDetector13room_info_pubE"></span><span id="_CPPv2N19ArucoMarkerDetector13room_info_pubE"></span><span id="ArucoMarkerDetector::room_info_pub__ros::Publisher"></span><span class="target" id="class_aruco_marker_detector_1a0cec8058ff14b949453c1ea0755c0bb5"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Publisher</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">room_info_pub</span></span></span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector13room_info_pubE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>ROS Publisher for rooms information. </p>
+</dd></dl>
+
+<dl class="cpp var">
+<dt class="sig sig-object cpp" id="_CPPv4N19ArucoMarkerDetector18marker_info_clientE">
+<span id="_CPPv3N19ArucoMarkerDetector18marker_info_clientE"></span><span id="_CPPv2N19ArucoMarkerDetector18marker_info_clientE"></span><span id="ArucoMarkerDetector::marker_info_client__ros::ServiceClient"></span><span class="target" id="class_aruco_marker_detector_1a1903e982e78d4da00654ecaeaad6514a"></span><span class="n"><span class="pre">ros</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">ServiceClient</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">marker_info_client</span></span></span><a class="headerlink" href="#_CPPv4N19ArucoMarkerDetector18marker_info_clientE" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Service client to retrieve room information embedded in the marker. </p>
+</dd></dl>
+
+</div>
+</dd></dl>
+
+</section>
+<section id="marker-server">
+<h1>Marker Server<a class="headerlink" href="#marker-server" title="Permalink to this heading"></a></h1>
+<div class="breathe-sectiondef docutils container">
+<p class="breathe-sectiondef-title rubric" id="breathe-section-title-functions">Functions</p>
+<dl class="cpp function">
+<dt class="sig sig-object cpp" id="_CPPv414markerCallbackRN19surveillance_robot215RoomInformation7RequestERN19surveillance_robot215RoomInformation8ResponseE">
+<span id="_CPPv314markerCallbackRN19surveillance_robot215RoomInformation7RequestERN19surveillance_robot215RoomInformation8ResponseE"></span><span id="_CPPv214markerCallbackRN19surveillance_robot215RoomInformation7RequestERN19surveillance_robot215RoomInformation8ResponseE"></span><span id="markerCallback__surveillance_robot2::RoomInformation::RequestR.surveillance_robot2::RoomInformation::ResponseR"></span><span class="target" id="marker__server_8cpp_1a60a355151e74cb865ae7b457a0b350ca"></span><span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">markerCallback</span></span></span><span class="sig-paren">(</span><span class="n"><span class="pre">surveillance_robot2</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RoomInformation</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Request</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">req</span></span>, <span class="n"><span class="pre">surveillance_robot2</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">RoomInformation</span></span><span class="p"><span class="pre">::</span></span><span class="n"><span class="pre">Response</span></span><span class="w"> </span><span class="p"><span class="pre">&amp;</span></span><span class="n sig-param"><span class="pre">res</span></span><span class="sig-paren">)</span><a class="headerlink" href="#_CPPv414markerCallbackRN19surveillance_robot215RoomInformation7RequestERN19surveillance_robot215RoomInformation8ResponseE" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="cpp function">
+<dt class="sig sig-object cpp">
+<span class="target" id="marker__server_8cpp_1a3c04138a5bfe5d72780bb7e82a18e627"></span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">main</span></span></span><span class="sig-paren">(</span><span class="kt"><span class="pre">int</span></span><span class="w"> </span><span class="n sig-param"><span class="pre">argc</span></span>, <span class="kt"><span class="pre">char</span></span><span class="w"> </span><span class="p"><span class="pre">*</span></span><span class="p"><span class="pre">*</span></span><span class="n sig-param"><span class="pre">argv</span></span><span class="sig-paren">)</span><br /></dt>
+<dd></dd></dl>
+
+</div>
+</section>
+<section id="module-utilities.surveillance_robot2.architecture_name_mapper">
+<span id="architecture-name-mapper"></span><h1>Architecture Name Mapper<a class="headerlink" href="#module-utilities.surveillance_robot2.architecture_name_mapper" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-architecture_name_mapper"></span><p>In this module are defined the names of all parameters, nodes, topics, services and action servers of the architecture.
+Also, it stores the data information about the ontology and the map.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.architecture_name_mapper.tag_log">
+<span class="sig-prename descclassname"><span class="pre">utilities.surveillance_robot2.architecture_name_mapper.</span></span><span class="sig-name descname"><span class="pre">tag_log</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">producer_tag</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/architecture_name_mapper.html#tag_log"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.architecture_name_mapper.tag_log" title="Permalink to this definition"></a></dt>
+<dd><p>Function used to label each log with a producer tag.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>msg</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – message to print</p></li>
+<li><p><strong>producer_tag</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – name of the node producer</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>msg tagged by producer</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>string (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)">str</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-utilities.surveillance_robot2.action_client_helper">
+<span id="action-client-helper"></span><h1>Action Client Helper<a class="headerlink" href="#module-utilities.surveillance_robot2.action_client_helper" title="Permalink to this heading"></a></h1>
+<span class="target" id="module-action_client_helper"></span><p>This module implements a class that simplifies the implementation of a client for ROS action servers.
+It is used by the class <a class="reference internal" href="#module-smach_helper" title="smach_helper: Python module for the helper class, used by the module :mod:`smach_robot` (Unix)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">smach_helper</span></code></a></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.action_client_helper.ActionClientHelper">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">utilities.surveillance_robot2.action_client_helper.</span></span><span class="sig-name descname"><span class="pre">ActionClientHelper</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">service_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">done_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">feedback_callback</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mutex</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/action_client_helper.html#ActionClientHelper"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper" title="Permalink to this definition"></a></dt>
+<dd><p>A class to simplify the implementation of a client for ROS action servers.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>service_name</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.11)"><em>str</em></a>) – it is the name of the server that will be invoked by this client.</p></li>
+<li><p><strong>action_type</strong> (<em>msg</em>) – it is the message type that the server will exchange.</p></li>
+<li><p><strong>done_callback</strong> (<em>function</em>) – it is the name of the function called when the action server completed its computation. If</p></li>
+<li><p><strong>set</strong> (<em>this parameter is not</em>) – </p></li>
+<li><p><strong>computation.</strong> (<em>called when the server completes its</em>) – </p></li>
+<li><p><strong>feedback_callback</strong> (<em>function</em>) – it is the name of the function called when the action server sends a feedback message. If</p></li>
+<li><p><strong>set</strong> – </p></li>
+<li><p><strong>message.</strong> (<em>called when the server sends a feedback</em>) – </p></li>
+<li><p><strong>mutex</strong> (<em>Lock</em>) – it is a <cite>Lock</cite> object synchronised with the <cite>done_callback</cite> and <cite>feedback_callback</cite>. If it is not set</p></li>
+<li><p><strong>(</strong><strong>i.e.</strong> – </p></li>
+<li><p><strong>None</strong><strong>)</strong> (<em>set to</em>) – </p></li>
+<li><p><strong>the</strong> (<em>then a new mutex instance is considered. Set this variable if you want to extends</em>) – </p></li>
+<li><p><strong>classes.</strong> (<em>synchronization with other</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.action_client_helper.ActionClientHelper.cancel_goals">
+<span class="sig-name descname"><span class="pre">cancel_goals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/action_client_helper.html#ActionClientHelper.cancel_goals"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.cancel_goals" title="Permalink to this definition"></a></dt>
+<dd><p>Stop the computation of the action server.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.action_client_helper.ActionClientHelper.get_results">
+<span class="sig-name descname"><span class="pre">get_results</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/action_client_helper.html#ActionClientHelper.get_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.get_results" title="Permalink to this definition"></a></dt>
+<dd><p>Method to get the results of the action.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>results of the action server, if any, or <cite>None</cite>.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>result (ActionResult)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.action_client_helper.ActionClientHelper.is_done">
+<span class="sig-name descname"><span class="pre">is_done</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/action_client_helper.html#ActionClientHelper.is_done"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.is_done" title="Permalink to this definition"></a></dt>
+<dd><p>Method to check if the action is done.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><cite>True</cite> if the action server finished is computation, or <cite>False</cite> otherwise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a> (Bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.action_client_helper.ActionClientHelper.is_running">
+<span class="sig-name descname"><span class="pre">is_running</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/action_client_helper.html#ActionClientHelper.is_running"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.is_running" title="Permalink to this definition"></a></dt>
+<dd><p>Method to check if the action server is running.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><cite>True</cite> if the action server is running, or <cite>False</cite> otherwise.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.11)">bool</a> (Bool)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.action_client_helper.ActionClientHelper.reset_client_states">
+<span class="sig-name descname"><span class="pre">reset_client_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/action_client_helper.html#ActionClientHelper.reset_client_states"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.reset_client_states" title="Permalink to this definition"></a></dt>
+<dd><p>Reset the client state variables stored in this class.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="utilities.surveillance_robot2.action_client_helper.ActionClientHelper.send_goal">
+<span class="sig-name descname"><span class="pre">send_goal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">goal</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/utilities/surveillance_robot2/action_client_helper.html#ActionClientHelper.send_goal"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#utilities.surveillance_robot2.action_client_helper.ActionClientHelper.send_goal" title="Permalink to this definition"></a></dt>
+<dd><p>Start the action server with a new <cite>goal</cite>.
+Note this call is not blocking (i.e., asynchronous performed).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>goal</strong> (<em>ActionGoal</em>) – the goal message of the action</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Mohammad Al Horany.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

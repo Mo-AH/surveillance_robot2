@@ -52,15 +52,48 @@
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>
   <build_depend>message_generation</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>aruco</build_depend>
+  <build_depend>aruco_msgs</build_depend>
+  <build_depend>sensor_msgs</build_depend>
+  <build_depend>visualization_msgs</build_depend>
+  <build_depend>nav_msgs</build_depend>
+  <build_depend>gazebo_ros</build_depend>
+  <build_depend>rviz</build_depend>
+  <build_depend>armor</build_depend>
+  <build_depend>armor_py_api</build_depend>
+  <build_depend>smach</build_depend>
+
   <build_export_depend>roscpp</build_export_depend>
   <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>cv_bridge</build_export_depend>
+  <build_export_depend>image_transport</build_export_depend>
+  <build_export_depend>roscpp</build_export_depend>
+  <build_export_depend>rospy</build_export_depend>
+  <build_export_depend>sensor_msgs</build_export_depend>
+  <build_export_depend>aruco</build_export_depend>
+  <build_export_depend>nav_msgs</build_export_depend>
+  <build_export_depend>armor</build_export_depend>
+  <build_export_depend>armor_py_api</build_export_depend>
+  <build_export_depend>smach</build_export_depend>
+
   <exec_depend>roscpp</exec_depend>
   <exec_depend>rospy</exec_depend>
-  <depend>aruco</depend>
+  <exec_depend>cv_bridge</exec_depend>
+  <exec_depend>image_transport</exec_depend>
+  <exec_depend>roscpp</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>surveillance_robot</exec_depend>
+  <exec_depend>aruco</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+  <exec_depend>armor</exec_depend>
+  <exec_depend>armor_py_api</exec_depend>
+  <exec_depend>smach</exec_depend>
+
   <depend>opencv</depend>
   <depend>gmapping</depend>
-
-  
 
 
   <!-- The export tag contains other, unspecified, tags -->

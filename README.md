@@ -17,7 +17,7 @@ The full documentation can be found [here](https://Mo-AH.github.io/surveillance_
 In this assignment, we are considering an indoor environment made of 4 rooms and 3 corridors, shown in the figure.
 The robot starts in an additional room attached to the corridor `E`, where there are 7 `ArucoMarkers` embedding the map informations.
 
-![indoor_map](########################)
+![indoor_map](https://user-images.githubusercontent.com/91679281/213928011-34ba2ce5-6b0e-4766-92aa-187dd7b0ec0a.jpg)
 
 The indoor environment is composed of locations and doors.
  - A room is a location with just one door

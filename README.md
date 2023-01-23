@@ -77,9 +77,9 @@ Note that, while performing `[1]` , it is always aware of the battery level. Mor
 
 ![image](https://user-images.githubusercontent.com/91679281/213946785-63f2050f-9763-42da-8898-2ccdebaf1f15.png)
 
-The model used consist in a simple vehicle with a laser scan and an arm mounted on top, consisting in one rotating base plus two links connected through revolute joints. On the end-effector is mounted a camera which has the aim of detecting markers. 
+The model used consist in a simple 4-wheels vehicle with a laser scan and an arm mounted on top, consisting in one rotating base plus two links connected through revolute joints. On the end-effector is mounted a camera which has the aim of detecting markers. 
 
-The arm's movement is managed through the JointStateController interface and the PID values has been tuned manually.
+The arm's movement is managed through the `JointStateController` interface and the PID values has been tuned manually.
 
 ---
 

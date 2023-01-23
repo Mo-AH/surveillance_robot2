@@ -267,7 +267,7 @@ In the video, there is the demonstration of the running code. It shows the initi
 - When interrupting a task because of the battery low, memorize and continue it after having recharged the battery.
 - Use the moveit package to control the robotic arm, instead of publishing the poses on the `joint_state_controller/command` topic.
 - Tune better the PID parameters of the joints controllers
-
+- Use a more realistic `skid_steer_drive` plugin instead of the `planar_move` plugin (used due to implementation problems with the first one) to control the robot motion
 
 ---
 
